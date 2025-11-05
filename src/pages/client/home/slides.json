@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "image": "https://muniabancay.gob.pe/web/wp-content/uploads/2023/11/396722618_122129358818036504_7256337231163423791_n-936x400.jpg",
+        "title": "Bienvenidos a InfoAbancay",
+        "description": "Bienvenidos a InfoAbancay. Aquí encontrarás noticias locales, avisos oficiales y reportajes sobre cultura, turismo y desarrollo de la ciudad. Actualizamos contenido diariamente para que estés al tanto de iniciativas municipales, proyectos comunitarios y oportunidades relevantes para los vecinos."
+    },
+    {
+        "id": 2,
+        "image": "https://muniabancay.gob.pe/web/wp-content/uploads/2023/11/396722618_122129358818036504_7256337231163423791_n-936x400.jpg",
+        "title": "Explora Abancay",
+        "description": "Explora Abancay y descubre sus paisajes, patrimonio histórico y rutas recomendadas para visitantes y residentes. Encontrarás guías detalladas, fotografías y consejos prácticos sobre transporte, gastronomía y lugares imprescindibles para disfrutar de la región con seguridad."
+    },
+    {
+        "id": 3,
+        "image": "https://muniabancay.gob.pe/web/wp-content/uploads/2023/11/396722618_122129358818036504_7256337231163423791_n-936x400.jpg",
+        "title": "Eventos y Actividades",
+        "description": "Mantente informado sobre los próximos eventos y actividades en la ciudad: ferias, festivales, talleres y encuentros comunitarios. Publicamos fechas, horarios, ubicaciones y recomendaciones para participar, además de información sobre inscripciones y medidas de seguridad cuando corresponda."
+    }
+]

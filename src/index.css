@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@theme {
+  --color-primary: #CB66C6;
+  --color-primary-dark: #C655C1;
+  --color-primary-7: rgba(203, 102, 198, 0.07);
+  --color-black-primary: #222222;
+  --color-black-secondary: #565F6D;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.bg-gradient-primary {
+  background-image: linear-gradient(to right, #CB66C6 0%, #9810FA 51%, #CB66C6 100%)
+}
+
+.bg-gradient-primary {
+  transition: 0.5s;
+  background-size: 200% auto;
+  box-shadow: 0 0 20px #eee;
+  display: block;
+}
+
+.bg-gradient-primary:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+button{
+  cursor: pointer;
+}
