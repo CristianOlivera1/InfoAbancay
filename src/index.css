@@ -12,7 +12,12 @@
   --color-black-primary: #222222;
   --color-black-secondary: #565F6D;
 }
-
+* {
+  scrollbar-width: thin;
+}
+body{
+  background-color: #F6F7F8;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -37,4 +42,25 @@ h1 {
 
 button{
   cursor: pointer;
+}
+
+/* Scrollbar general */
+::-webkit-scrollbar {
+  width: 8px;       
+  height: 8px;         
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;    
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af; 
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }

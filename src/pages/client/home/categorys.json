@@ -1,0 +1,32 @@
+[
+  {
+    "idCategory": 1,
+    "name": "Noticias",
+    "description": "Sección dedicada a las últimas novedades y comunicados relevantes.",
+    "icon": "fluent-color:news-16"
+  },
+  {
+    "idCategory": 2,
+    "name": "Eventos",
+    "description": "Calendario de actividades culturales, sociales y oficiales.",
+    "icon": "twemoji:calendar"
+  },
+  {
+    "idCategory": 3,
+    "name": "Empleos",
+    "description": "Ofertas laborales y oportunidades profesionales disponibles.",
+    "icon": "noto-v1:woman-construction-worker"
+  },
+  {
+    "idCategory": 4,
+    "name": "Publicidad",
+    "description": "Espacio para anuncios y campañas informativas.",
+    "icon": "flat-color-icons:advertising"
+  },
+  {
+    "idCategory": 5,
+    "name": "Reporte ciudadano",
+    "description": "Canal para que los ciudadanos reporten incidencias o sugerencias.",
+    "icon": "streamline-ultimate-color:phone-type"
+  }
+]
