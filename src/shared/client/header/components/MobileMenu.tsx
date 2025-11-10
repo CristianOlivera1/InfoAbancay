@@ -17,7 +17,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ toggleMenu }) => {
   return (
     <div className="lg:hidden fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-white px-6 py-6 overflow-y-auto">
       <div className="flex items-center justify-between">
-        <Link to="/" className="-m-1.5 p-1.5 flex">
+        <Link to="/" className="-m-1.5 p-1.5 flex" onClick={toggleMenu}>
           <img src="src/assets/img/logos/logo-infoabancay.webp" className="size-14" alt="Logo IA" />
           <img src="src/assets/img/logos/infoabancay2.webp" className="w-32" alt="Logo Info Abancay" />
         </Link>
@@ -35,18 +35,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ toggleMenu }) => {
             {/* Auth Buttons for Mobile */}
             <div className="flex flex-col items-center justify-center space-y-2">
               <Link
-                to="/login"
-                className="w-full px-4 py-2 text-center rounded-md border font-medium text-primary border-primary hover:border-primary-dark hover:text-purple-700 transition">
+                to="/iniciarsesion"
+                className="w-full px-4 py-2 text-center rounded-md border font-medium text-primary border-primary hover:border-primary-dark hover:text-purple-700 transition text-shadow-md text-shadow-purple-100" onClick={toggleMenu}>
                 Iniciar sesión
               </Link>
-              <Link to="/register" className="text-white bg-gradient-primary px-4 py-2 rounded w-full font-semibold text-center">
+              <Link to="/registrarse" className="text-white bg-gradient-primary px-4 py-2 rounded w-full font-semibold text-center" onClick={toggleMenu}>
                 Registrarse
               </Link>
             </div>
 
             {/* Navigation Links */}
-            <Link to="/" className="flex gap-2 -mx-3 rounded-lg px-3 py-2 font-semibold text-gray-900 hover:bg-gray-50">
-              <Icon icon="lucide:home" className="size-5" />
+            <Link to="/" className="flex gap-2 -mx-3 rounded-lg px-3 py-2 font-semibold text-gray-900 hover:bg-gray-50" onClick={toggleMenu}>
               Inicio
             </Link>
 
