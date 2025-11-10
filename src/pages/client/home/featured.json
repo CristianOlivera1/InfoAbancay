@@ -1,0 +1,58 @@
+[
+    {
+        "idPublication": 1,
+        "title": "Nueva Iniciativa Ambiental para la Conservación y Desarrollo Comunitario",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
+        "userName": "EcoVida S.A.",
+        "createdAt": "2024-11-01",
+        "views": 1240
+    },
+    {
+        "idPublication": 2,
+        "title": "Gran Festival Cultural 2025: Música, Arte y Tradiciones de la Región",
+        "image": "https://images.unsplash.com/photo-1514986888952-8cd320577b48?auto=format&fit=crop&w=1200&q=80",
+        "userName": "CulturaViva Ltda.",
+        "createdAt": "2025-03-10",
+        "views": 3420
+    },
+    {
+        "idPublication": 3,
+        "title": "Avances en Infraestructura",
+        "image": "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80",
+        "userName": "María Fernández Arquitecta de Proyectos",
+        "createdAt": "2024-08-20",
+        "views": 2750
+    },
+    {
+        "idPublication": 4,
+        "title": "Campaña de Salud Pública y Prevención Integral para Familias Vulnerables",
+        "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=1200&q=80",
+        "userName": "SaludPlus",
+        "createdAt": "2025-05-12",
+        "views": 1980
+    },
+    {
+        "idPublication": 5,
+        "title": "Mejoras en la Educación",
+        "image": "https://images.unsplash.com/photo-1581090469529-6a8e0f0b3d9b?auto=format&fit=crop&w=1200&q=80",
+        "userName": "Lucía Torres",
+        "createdAt": "2024-09-15",
+        "views": 1650
+    },
+    {
+        "idPublication": 6,
+        "title": "Ruta Turística Renovada: Circuito Histórico, Gastronomía y Naturaleza",
+        "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+        "userName": "TurisCo",
+        "createdAt": "2025-01-20",
+        "views": 4120
+    },
+    {
+        "idPublication": 7,
+        "title": "Iniciativa Económica Local",
+        "image": "https://images.unsplash.com/photo-1542223616-1b5a0a8f9f6b?auto=format&fit=crop&w=1200&q=80",
+        "userName": "Javier Gómez",
+        "createdAt": "2024-12-05",
+        "views": 870
+    }
+]

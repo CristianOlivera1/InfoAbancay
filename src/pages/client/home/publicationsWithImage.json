@@ -1,0 +1,146 @@
+[
+  {
+    "idPublication": 1,
+    "title": "Nueva Iniciativa Ambiental, Iniciativa Ambiental Nueva Iniciativa Ambiental, Iniciativa Ambiental",
+    "description": "Se lanza un nuevo programa para preservar los recursos naturales de Abancay.",
+    "featuredImage": "https://picsum.photos/id/1043/936/400",
+    "images": [
+      "https://picsum.photos/id/1043/936/400",
+      "https://picsum.photos/id/1044/936/400",
+      "https://picsum.photos/id/1045/936/400"
+    ],
+    "createdAt": "2023-11-10T08:30:00Z",
+    "userName": "MunicipalidadProv Abancay MunicipalidadProv Abancay",
+    "userPhoto": "",
+    "categoryName": "Medio Ambiente",
+    "views": 1245,
+    "totalLikes": 230,
+    "totalUnlikes": 5,
+    "totalComments": 12
+  },
+  {
+    "idPublication": 2,
+    "title": "Festival Cultural 2025: Celebración de la Diversidad Artística y Tradicional",
+    "description": "Celebra la diversidad cultural con música, danza, gastronomía, exposiciones de arte local y talleres participativos que promueven la identidad regional.",
+    "featuredImage": "https://picsum.photos/id/1046/936/400",
+    "images": [
+      "https://picsum.photos/id/1046/936/400"
+    ],
+    "createdAt": "2024-01-20T14:00:00Z",
+    "userName": "AsociacionCultural Abancay",
+    "userPhoto": "https://i.pravatar.cc/150?u=asociacionculturalabancay",
+    "categoryName": "Cultura",
+    "views": 980,
+    "totalLikes": 0,
+    "totalUnlikes": 3,
+    "totalComments": 20
+  },
+  {
+    "idPublication": 3,
+    "title": "Avances en Infraestructura Vial y Urbana para la Región de Apurímac",
+    "description": "Se inauguran nuevas obras para mejorar la conectividad en la región, incluyendo puentes, vías asfaltadas, iluminación pública y señalización inteligente.",
+    "featuredImage": "https://picsum.photos/id/1047/936/400",
+    "images": [
+      "https://picsum.photos/id/1047/936/400",
+      "https://picsum.photos/id/1048/936/400"
+    ],
+    "createdAt": "2024-06-05T09:15:00Z",
+    "userName": "GerenciaObras_MuniAbancay",
+    "userPhoto": "",
+    "categoryName": "Infraestructura",
+    "views": 1570,
+    "totalLikes": 310,
+    "totalUnlikes": 10,
+    "totalComments": 25
+  },
+  {
+    "idPublication": 4,
+    "title": "Programa de Alfabetización para Adultos en Comunidades Rurales",
+    "description": "Inicia un programa de alfabetización para adultos en zonas rurales, con enfoque intercultural, materiales adaptados y docentes capacitados.",
+    "featuredImage": "https://picsum.photos/id/1011/936/400",
+    "images": [
+      "https://picsum.photos/id/1011/936/400"
+    ],
+    "createdAt": "2025-02-12T10:00:00Z",
+    "userName": "Maria Alejandra López",
+    "userPhoto": "https://i.pravatar.cc/150?u=maria_alejandra_lopez",
+    "categoryName": "Educación",
+    "views": 420,
+    "totalLikes": 58,
+    "totalUnlikes": 2,
+    "totalComments": 8
+  },
+  {
+    "idPublication": 5,
+    "title": "Campaña de Salud Preventiva y Bienestar Comunitario",
+    "description": "Jornadas de vacunación, chequeos médicos gratuitos, charlas sobre nutrición y prevención de enfermedades en diversos centros de la ciudad.",
+    "featuredImage": "https://picsum.photos/id/1025/936/400",
+    "images": [
+      "https://picsum.photos/id/1025/936/400",
+      "https://picsum.photos/id/1026/936/400",
+      "https://picsum.photos/id/1027/936/400"
+    ],
+    "createdAt": "2024-11-03T08:45:00Z",
+    "userName": "Juan Carlos Pérez",
+    "userPhoto": "https://i.pravatar.cc/150?u=juan_carlos_perez",
+    "categoryName": "Salud",
+    "views": 860,
+    "totalLikes": 140,
+    "totalUnlikes": 4,
+    "totalComments": 33
+  },
+  {
+    "idPublication": 6,
+    "title": "Torneo Interescolar 2025",
+    "description": "Competencias deportivas entre colegios para fomentar el deporte, la convivencia y el trabajo en equipo entre estudiantes de toda la provincia.",
+    "featuredImage": "https://picsum.photos/id/1005/936/400",
+    "images": [
+      "https://picsum.photos/id/1005/936/400",
+      "https://picsum.photos/id/1006/936/400"
+    ],
+    "createdAt": "2025-05-18T16:30:00Z",
+    "userName": "InstitutoDeportesAbancay",
+    "userPhoto": "https://i.pravatar.cc/150?u=institutodeportesabancay",
+    "categoryName": "Deportes",
+    "views": 1120,
+    "totalLikes": 220,
+    "totalUnlikes": 6,
+    "totalComments": 40
+  },
+  {
+    "idPublication": 7,
+    "title": "Ruta Turística Renovada",
+    "description": "Se inaugura una ruta turística con señalización, puntos de observación mejorados, guías locales y material informativo para visitantes nacionales e internacionales.",
+    "featuredImage": "https://picsum.photos/id/1069/936/400",
+    "images": [
+      "https://picsum.photos/id/1069/936/400",
+      "https://picsum.photos/id/1070/936/400"
+    ],
+    "createdAt": "2024-07-22T09:00:00Z",
+    "userName": "AgenciaTuristicaAndina",
+    "userPhoto": "https://i.pravatar.cc/150?u=agenciaturisticaandina",
+    "categoryName": "Turismo",
+    "views": 765,
+    "totalLikes": 95,
+    "totalUnlikes": 1,
+    "totalComments": 15
+  },
+  {
+    "idPublication": 8,
+    "title": "Plan Integral de Seguridad Ciudadana para Barrios Vulnerables",
+    "description": "Nuevo plan municipal para reforzar la seguridad en barrios y espacios públicos, con patrullaje preventivo, cámaras de vigilancia y participación vecinal.",
+    "featuredImage": "https://picsum.photos/id/1043/936/400",
+    "images": [
+      "https://picsum.photos/id/1043/936/400",
+      "https://picsum.photos/id/1049/936/400"
+    ],
+    "createdAt": "2024-09-30T20:15:00Z",
+    "userName": "DireccionSeguridad_MuniAbancay",
+    "userPhoto": "https://i.pravatar.cc/150?u=direccionseguridad_muniabancay",
+    "categoryName": "Seguridad",
+    "views": 1330,
+    "totalLikes": 180,
+    "totalUnlikes": 12,
+    "totalComments": 28
+  }
+]
