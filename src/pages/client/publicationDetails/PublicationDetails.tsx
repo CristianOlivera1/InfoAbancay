@@ -1,80 +1,107 @@
-import { useParams, Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import NewNews from "./components/NewNews";
+import RelatedContent from "./components/RelatedContent";
+import Comments from "./components/Comments";
+import { usePostInteractions } from "../home/components/PostInteractions";
+import PostInteractionButtons from "../home/components/PostInteractionButtons";
 
 export default function PublicationDetails() {
-    const { id } = useParams<{ id: string }>();
-    
-    // Simulando datos de publicaciones
-    const publications = [
-        { 
-            id: 1, 
-            title: "Noticia 1", 
-            description: "Descripción de la primera noticia",
-            content: "Este es el contenido completo de la primera noticia. Aquí encontrarás toda la información detallada sobre este importante acontecimiento en Abancay.",
-            date: "2024-11-04",
-            author: "Redacción InfoAbancay"
-        },
-        { 
-            id: 2, 
-            title: "Noticia 2", 
-            description: "Descripción de la segunda noticia",
-            content: "Este es el contenido completo de la segunda noticia. Información relevante para la comunidad de Abancay.",
-            date: "2024-11-03",
-            author: "Redacción InfoAbancay"
-        },
-        { 
-            id: 3, 
-            title: "Noticia 3", 
-            description: "Descripción de la tercera noticia",
-            content: "Este es el contenido completo de la tercera noticia. Mantente informado con las últimas noticias de nuestra ciudad.",
-            date: "2024-11-02",
-            author: "Redacción InfoAbancay"
-        },
-    ];
+    const postInteractions = usePostInteractions();
 
-    const publication = publications.find(pub => pub.id === parseInt(id || '0'));
-
-    if (!publication) {
-        return (
-            <div className="container mx-auto px-4 py-8">
-                <h1 className="text-3xl font-bold mb-4">Publicación no encontrada</h1>
-                <p className="text-lg text-gray-700 mb-4">Lo sentimos, no pudimos encontrar la publicación que buscas.</p>
-                <Link to="/" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                    Volver al inicio
-                </Link>
-            </div>
-        );
-    }
+    // Datos de ejemplo para la publicación
+    const publication = {
+        idPublication: 1,
+        title: "Historic Downtown Street Fair Attracts Record Crowds",
+        totalLikes: 45,
+        totalUnlikes: 2,
+        totalComments: 12
+    };
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <Link to="/" className="text-blue-500 hover:text-blue-700 mb-4 inline-block">
-                ← Volver al inicio
-            </Link>
-            
-            <article className="max-w-4xl mx-auto">
-                <header className="mb-8">
-                    <h1 className="text-4xl font-bold mb-4">{publication.title}</h1>
-                    <div className="text-gray-600 mb-4">
-                        <p>Por {publication.author} | {publication.date}</p>
-                    </div>
-                    <p className="text-xl text-gray-700 mb-6">{publication.description}</p>
-                </header>
-                
-                <div className="prose max-w-none">
-                    <p className="text-lg leading-relaxed">{publication.content}</p>
+        <div className="container mx-auto px-4 sm:px-6 xl:px-32 my-25">
+            <div className="layout-content-container flex flex-col lg:flex-row gap-8">
+                {/* Main Content*/}
+                <div className="w-full lg:w-2/3 shrink-0">
+                    <article className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                        {/* Breadcrumbs */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            <Link className="text-sm font-medium text-gray-500" to="/">Inicio</Link>
+                            <span className="text-sm font-medium text-gray-500 ">/</span>
+                            <Link className="text-sm font-medium text-gray-500" to="/#loultimo">Lo último</Link>
+                            <span className="text-sm font-medium text-gray-500  hidden sm:inline">/</span>
+                            <span className="text-sm font-medium text-[#111418]  line-clamp-1 sm:line-clamp-none">Historic Downtown Street Fair Attracts Record Crowds</span>
+                        </div>
+                        {/* Headline */}
+                        <h1 className="text-[#111418]  tracking-tight text-3xl md:text-4xl font-bold leading-tight text-left pb-3 pt-2">Historic Downtown Street Fair Attracts Record Crowds</h1>
+                        {/* Post Meta */}
+                        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 border-y border-gray-200 py-4">
+                            <div className="flex items-center gap-3">
+                                <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Author avatar, Jane Doe" style={{ backgroundImage: "url('https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg')" }}></div>
+                                <p className="text-sm font-medium text-[#111418] flex-1 truncate">Jane Doe, City Correspondent</p>
+                            </div>
+                            <div className="shrink-0 ml-auto flex items-center gap-4 text-gray-500  text-sm">
+                                <span>150 vistas</span>
+                                <span>•</span>
+                                <span>October 26, 2023</span>
+                                <span>•</span>
+                                <span className="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs font-bold" >Categoría</span>
+                            </div>
+                        </div>
+                        {/* Image Carousel */}
+                        <div className="my-6">
+                            <div className="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden rounded-xl">
+                                <div className="flex items-stretch snap-x snap-mandatory gap-3">
+                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
+                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="A bustling street fair with many people walking around stalls" style={{ backgroundImage: "url('https://media1.thrillophilia.com/filestore/n2ib9inwzcilxpg3aumbigvq4jus_IMG_World_Dubai_Fun_38a0986c1a.jpg')" }}></div>
+                                    </div>
+                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
+                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="Close-up of a food stall selling colorful artisanal pastries" style={{ backgroundImage: "url('https://holidaylocationguide.com/wp-content/uploads/2023/11/Img-world-cartoon-network-1.jpg')" }}></div>
+                                    </div>
+                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
+                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="A local band playing live music on a small stage" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000')" }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Post Body */}
+                        <div className="prose prose-lg  max-w-none text-gray-800 ">
+                            <p>This past weekend, the heart of our city came alive as the annual Historic Downtown Street Fair attracted an unprecedented number of visitors. The event, which spanned three blocks, showcased the best of local culture, cuisine, and craftsmanship, drawing in families and tourists alike for a day of celebration and community.</p>
+                            <p>From early morning until late evening, the streets were filled with the sights and sounds of joy. Over 150 vendors offered everything from handmade jewelry to artisanal cheeses, while food trucks served up a diverse array of culinary delights. The main stage featured a continuous lineup of local bands, providing a vibrant soundtrack to the festivities.</p>
+
+                        </div>
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2 mt-8">
+                            <span className="bg-gray-100 text-gray-600  text-xs font-bold py-1.5 px-3 rounded-full hover:bg-gray-200 transition-colors" >#StreetFair</span>
+                            <span className="bg-gray-100 text-gray-600  text-xs font-bold py-1.5 px-3 rounded-full hover:bg-gray-200 transition-colors" >#Community</span>
+                            <span className="bg-gray-100 text-gray-600  text-xs font-bold py-1.5 px-3 rounded-full hover:bg-gray-200 transition-colors" >#FamilyFriendly</span>
+                        </div>
+                        <div className="border-t border-gray-200 my-8"></div>
+
+                        <PostInteractionButtons
+                            publication={publication}
+                            likedPosts={postInteractions.likedPosts}
+                            dislikedPosts={postInteractions.dislikedPosts}
+                            savedPosts={postInteractions.savedPosts}
+                            showFilledLike={postInteractions.showFilledLike}
+                            showFilledDislike={postInteractions.showFilledDislike}
+                            onLike={postInteractions.handleLike}
+                            onDislike={postInteractions.handleDislike}
+                            onComment={postInteractions.handleComment}
+                            onBookmark={postInteractions.handleBookmark}
+                            onShare={postInteractions.handleShare}
+                        />
+                    </article>
+                    {/* Comments Section */}
+                    <Comments />
                 </div>
-                
-                <footer className="mt-8 pt-8 border-t border-gray-200">
-                    <div className="flex space-x-4">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
-                            Compartir
-                        </button>
-                        <button className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors">
-                            Imprimir
-                        </button>
-                    </div>
-                </footer>
-            </article>
+                {/* Sidebar */}
+                <aside className="w-full lg:w-1/3 space-y-8 lg:sticky top-24 self-start">
+                    {/* Últimas noticias*/}
+                    <NewNews />
+                    {/* Related Content */}
+                    <RelatedContent />
+                </aside>
+            </div>
         </div>
-    );
+    )
 }
