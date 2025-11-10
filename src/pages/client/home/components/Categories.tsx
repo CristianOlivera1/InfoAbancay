@@ -6,7 +6,7 @@ export default function Categories() {
   return (
       <section className="bg-primary-7 w-full my-10 rounded-lg">
               <div className="max-w-6xl mx-auto text-center py-4 px-0 sm:p-6">
-                <h2 className="text-xl font-semibold text-black-primary mb-8">
+                <h2 className="text-xl font-semibold text-gray-800 mb-8">
                   Información por categoría
                 </h2>
                 <div className="flex gap-4 sm:gap-8 overflow-x-auto sm:flex-wrap sm:justify-center p-2 cursor-pointer">
@@ -19,7 +19,7 @@ export default function Categories() {
                         icon={cat.icon}
                         className="w-10 h-10 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
                       />
-                      <span className="text-sm mt-2 text-black-secondary">{cat.name}</span>
+                      <span className="text-sm mt-2 text-gray-500">{cat.name}</span>
                     </div>
                   ))}
                 </div>
