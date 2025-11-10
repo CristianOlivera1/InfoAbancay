@@ -1,0 +1,113 @@
+import { Icon } from '@iconify/react';
+import type { Publication } from './PostInteractions';
+
+interface PostInteractionButtonsProps {
+    publication: Publication;
+    likedPosts: Set<number>;
+    dislikedPosts: Set<number>;
+    savedPosts: Set<number>;
+    showFilledLike: { [key: number]: boolean };
+    showFilledDislike: { [key: number]: boolean };
+    onLike: (pubId: number, event: React.MouseEvent<HTMLButtonElement>) => void;
+    onDislike: (pubId: number, event: React.MouseEvent<HTMLButtonElement>) => void;
+    onComment: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onBookmark: (pubId: number, event: React.MouseEvent<HTMLButtonElement>) => void;
+    onShare: (pub: Publication, event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export default function PostInteractionButtons({
+    publication,
+    likedPosts,
+    dislikedPosts,
+    savedPosts,
+    showFilledLike,
+    showFilledDislike,
+    onLike,
+    onDislike,
+    onComment,
+    onBookmark,
+    onShare
+}: PostInteractionButtonsProps) {
+    return (
+        <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-2 text-gray-500">
+                {/* Likes */}
+                <button type="button" title="Me gusta" aria-label="Me gusta"
+                    className={`flex items-center hover:bg-blue-50 p-1 hover:text-blue-500 hover:rounded-md gap-1 transition-colors ${likedPosts.has(publication.idPublication) ? 'text-blue-600 bg-blue-50 rounded-md' : 'text-gray-500'}`}
+                    onClick={(e) => onLike(publication.idPublication, e)}>
+                    {likedPosts.has(publication.idPublication) && showFilledLike[publication.idPublication] ? (
+                        <Icon icon="solar:like-bold-duotone" width="24" height="24" />
+                    ) : (
+                        <Icon icon="solar:like-line-duotone" width="24" height="24" />
+                    )}
+                    {(publication.totalLikes + (likedPosts.has(publication.idPublication) ? 1 : 0) - (dislikedPosts.has(publication.idPublication) ? 1 : 0)) > 0 &&
+                        <span className="font-medium text-sm">{publication.totalLikes + (likedPosts.has(publication.idPublication) ? 1 : 0) - (dislikedPosts.has(publication.idPublication) ? 1 : 0)}</span>}
+                </button>
+
+                {/* Unlikes */}
+                <button type="button"
+                    title="Ya no me gusta"
+                    aria-label="Ya no me gusta"
+                    className={`flex items-center hover:bg-red-50 p-1 hover:text-red-500 hover:rounded-md gap-1 transition-colors ${dislikedPosts.has(publication.idPublication) ? 'text-red-600 bg-red-50 rounded-md' : 'text-gray-500'}`}
+                    onClick={(e) => onDislike(publication.idPublication, e)}>
+                    {dislikedPosts.has(publication.idPublication) && showFilledDislike[publication.idPublication] ? (
+                        <Icon icon="solar:dislike-bold-duotone" width="24" height="24" />
+                    ) : (
+                        <Icon icon="solar:dislike-line-duotone" width="24" height="24" />
+                    )}
+                    {(publication.totalUnlikes + (dislikedPosts.has(publication.idPublication) ? 1 : 0)) > 0 &&
+                        <span className="font-medium text-sm">{publication.totalUnlikes + (dislikedPosts.has(publication.idPublication) ? 1 : 0)}</span>}
+                </button>
+
+                {/* Comentarios */}
+                <button type="button"
+                    title="Comentar publicación"
+                    aria-label="Comentar publicación"
+                    className="flex items-center hover:bg-yellow-50 p-1 hover:text-yellow-500 hover:rounded-md gap-1 text-gray-500 transition-colors"
+                    onClick={onComment}>
+                    <Icon icon="iconamoon:comment" width="24" height="24" />
+                    {publication.totalComments > 0 && <span className="font-medium text-sm">{publication.totalComments}</span>}
+                </button>
+            </div>
+
+            {/* Fijar */}
+            <div className="flex items-center gap-2 text-gray-500">
+                {/* Fijar */}
+                <button
+                    type="button"
+                    title="Fijar publicación"
+                    aria-label="Fijar publicación"
+                    className={`flex items-center gap-2 hover:bg-amber-50 p-1 hover:text-amber-500 hover:rounded-md transition-colors text-sm font-medium ${savedPosts.has(publication.idPublication) ? 'text-amber-500' : 'text-gray-500'
+                        } hover:text-amber-600`}
+                    onClick={(e) => onBookmark(publication.idPublication, e)}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill={savedPosts.has(publication.idPublication) ? 'currentColor' : 'none'}
+                    >
+                        <path
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            d="M4 9c0-2.828 0-4.243.879-5.121C5.757 3 7.172 3 10 3h4c2.828 0 4.243 0 5.121.879C20 4.757 20 6.172 20 9v6.828c0 2.683 0 4.024-.844 4.435c-.845.41-1.9-.419-4.01-2.076l-.675-.531c-1.186-.932-1.78-1.398-2.471-1.398s-1.285.466-2.471 1.398l-.676.53c-2.11 1.658-3.164 2.487-4.009 2.077C4 19.853 4 18.51 4 15.828z"
+                        />
+                    </svg>
+                </button>
+
+                {/* Compartir */}
+                <button
+                    type="button"
+                    title="Compartir publicación"
+                    aria-label="Compartir publicación"
+                    className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:bg-sky-50 p-1 hover:text-sky-500 hover:rounded-md transition-colors"
+                    onClick={(e) => onShare(publication, e)}
+                >
+                    <Icon icon="tabler:share" width="24" height="24" />
+                </button>
+            </div>
+        </div>
+
+    );
+}
