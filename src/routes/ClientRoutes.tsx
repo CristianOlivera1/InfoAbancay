@@ -5,6 +5,7 @@ import Header from '../shared/client/header/Header';
 import Footer from '../shared/client/footer/Footer';
 import Login from '../pages/client/login/Login';
 import Register from '../pages/client/register/Register';
+import InsertPublication from '../pages/client/insertPublication/InsertPublication';
 
 export default function ClientRoutes() {
   return (
@@ -13,10 +14,11 @@ export default function ClientRoutes() {
       <main className="grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/publication/:idPublication" element={<PublicationDetails />} />
-          <Route path="/iniciarsesion" element={<Login />} />
+          <Route path="/publicacion/:idPublication" element={<PublicationDetails />} />
+          <Route path="/iniciar-sesion" element={<Login />} />
           <Route path="/registrarse" element={<Register />} />
-          <Route path="/Publicationdetails" element={<PublicationDetails />} />
+          <Route path="/detalles-publicacion" element={<PublicationDetails />} />
+          <Route path="/insertar-publicacion" element={<InsertPublication />} />
         </Routes>
       </main>
       <Footer />
