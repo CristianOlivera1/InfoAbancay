@@ -4,6 +4,7 @@ import RelatedContent from "./components/RelatedContent";
 import Comments from "./components/Comments";
 import { usePostInteractions } from "../home/components/PostInteractions";
 import PostInteractionButtons from "../home/components/PostInteractionButtons";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 export default function PublicationDetails() {
     const postInteractions = usePostInteractions();
@@ -22,7 +23,7 @@ export default function PublicationDetails() {
             <div className="layout-content-container flex flex-col lg:flex-row gap-8">
                 {/* Main Content*/}
                 <div className="w-full lg:w-2/3 shrink-0">
-                    <article className="bg-white rounded-xl shadow-sm p-6 md:p-8">
+                    <article className="bg-white rounded-xl shadow-sm p-3 sm:p-6 md:p-8">
                         {/* Breadcrumbs */}
                         <div className="flex flex-wrap gap-2 mb-4">
                             <Link className="text-sm font-medium text-gray-500" to="/">Inicio</Link>
@@ -42,27 +43,56 @@ export default function PublicationDetails() {
                             <div className="shrink-0 ml-auto flex items-center gap-4 text-gray-500  text-sm">
                                 <span>150 vistas</span>
                                 <span>•</span>
-                                <span>October 26, 2023</span>
+                                <span>Octubre 26, 2023</span>
                                 <span>•</span>
                                 <span className="bg-gray-100 text-gray-500 px-2 py-1 rounded-full text-xs font-bold" >Categoría</span>
                             </div>
                         </div>
                         {/* Image Carousel */}
-                        <div className="my-6">
-                            <div className="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden rounded-xl">
-                                <div className="flex items-stretch snap-x snap-mandatory gap-3">
-                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
-                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="A bustling street fair with many people walking around stalls" style={{ backgroundImage: "url('https://media1.thrillophilia.com/filestore/n2ib9inwzcilxpg3aumbigvq4jus_IMG_World_Dubai_Fun_38a0986c1a.jpg')" }}></div>
-                                    </div>
-                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
-                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="Close-up of a food stall selling colorful artisanal pastries" style={{ backgroundImage: "url('https://holidaylocationguide.com/wp-content/uploads/2023/11/Img-world-cartoon-network-1.jpg')" }}></div>
-                                    </div>
-                                    <div className="flex h-full flex-1 flex-col gap-4 min-w-[80vw] sm:min-w-60 snap-center">
-                                        <div className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl" data-alt="A local band playing live music on a small stage" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000')" }}></div>
+                        <PhotoProvider>
+                            <div className="my-6">
+                                <div className="flex overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden rounded-xl">
+                                    <div className="flex items-stretch snap-x snap-mandatory gap-3">
+                                        <div className="flex h-full flex-1 flex-col gap-4 min-w-[60vw] sm:min-w-60 snap-center">
+                                            <PhotoView src="https://media1.thrillophilia.com/filestore/n2ib9inwzcilxpg3aumbigvq4jus_IMG_World_Dubai_Fun_38a0986c1a.jpg">
+                                                <div
+                                                    className="w-full h-[220px] sm:h-[200px] bg-center bg-no-repeat sm:aspect-video bg-cover rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+                                                    data-alt="A bustling street fair"
+                                                    style={{
+                                                        backgroundImage:
+                                                            "url('https://media1.thrillophilia.com/filestore/n2ib9inwzcilxpg3aumbigvq4jus_IMG_World_Dubai_Fun_38a0986c1a.jpg')",
+                                                    }}
+                                                ></div>
+                                            </PhotoView>
+                                        </div>
+                                        <div className="flex h-full flex-1 flex-col gap-4 min-w-[60vw] sm:min-w-60 snap-center">
+                                            <PhotoView src="https://holidaylocationguide.com/wp-content/uploads/2023/11/Img-world-cartoon-network-1.jpg">
+                                                <div
+                                                    className="w-full h-[220px] sm:h-[200px] bg-center bg-no-repeat sm:aspect-video bg-cover rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+                                                    data-alt="Food stall"
+                                                    style={{
+                                                        backgroundImage:
+                                                            "url('https://holidaylocationguide.com/wp-content/uploads/2023/11/Img-world-cartoon-network-1.jpg')",
+                                                    }}
+                                                ></div>
+                                            </PhotoView>
+                                        </div>
+                                        <div className="flex h-full flex-1 flex-col gap-4 min-w-[60vw] sm:min-w-60 snap-center">
+                                            <PhotoView src="https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000">
+                                                <div
+                                                    className="w-full h-[220px] sm:h-[200px] sm:aspect-video bg-center bg-no-repeat bg-cover rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+                                                    data-alt="Live music"
+                                                    style={{
+                                                        backgroundImage:
+                                                            "url('https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000')",
+                                                    }}
+                                                ></div>
+                                            </PhotoView>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </PhotoProvider>
                         {/* Post Body */}
                         <div className="prose prose-lg  max-w-none text-gray-800 ">
                             <p>This past weekend, the heart of our city came alive as the annual Historic Downtown Street Fair attracted an unprecedented number of visitors. The event, which spanned three blocks, showcased the best of local culture, cuisine, and craftsmanship, drawing in families and tourists alike for a day of celebration and community.</p>
@@ -75,7 +105,7 @@ export default function PublicationDetails() {
                             <span className="bg-gray-100 text-gray-600  text-xs font-bold py-1.5 px-3 rounded-full hover:bg-gray-200 transition-colors" >#Community</span>
                             <span className="bg-gray-100 text-gray-600  text-xs font-bold py-1.5 px-3 rounded-full hover:bg-gray-200 transition-colors" >#FamilyFriendly</span>
                         </div>
-                        <div className="border-t border-gray-200 my-8"></div>
+                        <div className="border-t border-gray-200 my-5 sm:my-8"></div>
 
                         <PostInteractionButtons
                             publication={publication}
