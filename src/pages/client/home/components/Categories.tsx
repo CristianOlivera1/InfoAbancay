@@ -4,8 +4,8 @@ import categorys from '../categorys.json';
 
 export default function Categories() {
   return (
-      <section className="bg-primary-7 w-full my-10 rounded-lg">
-              <div className="max-w-6xl mx-auto text-center py-4 px-0 sm:p-6">
+      <section className="bg-primary-7 w-full my-10 rounded-2xl" style={{background: "linear-gradient(to bottom, var(--color-primary-7) 60%, white 100%)"}}>
+              <div className="max-w-6xl mx-auto text-center py-4 px-0 sm:p-6 ">
                 <h2 className="text-xl font-semibold text-gray-800 mb-8">
                   Información por categoría
                 </h2>
