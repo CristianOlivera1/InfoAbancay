@@ -30,16 +30,18 @@ export default function Header() {
                                 Inicio
                             </Link>
                             <div className="relative group">
-                                <Link
-                                    to="/categories"
-                                    className="flex items-center text-gray-800 hover:text-gray-900">
+                                <button
+                                    type="button"
+                                    className="flex items-center text-gray-800 hover:text-gray-900 group"
+                                >
                                     Categorías
                                     <Icon
                                         icon="tabler:chevron-down"
                                         width="24"
                                         height="24"
-                                        className="pt-1 ml-1 transition-transform duration-300 group-hover:rotate-180" />
-                                </Link>
+                                        className="pt-1 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                                    />
+                                </button>
                                 <ModalCategories />
                             </div>
                         </div>
@@ -57,7 +59,7 @@ export default function Header() {
                     {/* Desktop Auth Buttons */}
                     <div className="hidden lg:flex space-x-4">
                         <Link
-                            to="/iniciarsesion"
+                            to="/iniciar-sesion"
                             className="px-4 py-2 rounded-md border font-medium text-primary border-primary hover:border-primary-dark hover:text-purple-700 transition text-shadow-md text-shadow-purple-100">
                             Iniciar sesión
                         </Link>
