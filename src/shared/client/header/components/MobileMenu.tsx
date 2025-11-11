@@ -35,7 +35,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ toggleMenu }) => {
             {/* Auth Buttons for Mobile */}
             <div className="flex flex-col items-center justify-center space-y-2">
               <Link
-                to="/iniciarsesion"
+                to="/iniciar-sesion"
                 className="w-full px-4 py-2 text-center rounded-md border font-medium text-primary border-primary hover:border-primary-dark hover:text-purple-700 transition text-shadow-md text-shadow-purple-100" onClick={toggleMenu}>
                 Iniciar sesión
               </Link>
