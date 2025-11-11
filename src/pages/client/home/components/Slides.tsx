@@ -60,14 +60,14 @@ export default function Slides() {
     <section className='mt-24'>
       {/* Slides */}
       <div className="relative w-full">
-        <div className="relative h-auto overflow-hidden rounded-lg">
+        <div className="relative h-auto overflow-hidden rounded-2xl">
           {slides.map((slide, index) => (
             <div
               key={slide.idPublication}
               className={`${index === currentSlide ? 'block' : 'hidden'}`}
             >
               {/* Contenedor de imagen y navegación */}
-              <div className="relative h-92 overflow-hidden rounded-t-lg bg-black">
+              <div className="relative h-92 overflow-hidden rounded-t-2xl bg-black">
                 <img
                   src={slide.image}
                   className={`w-full h-full object-cover ${index === currentSlide

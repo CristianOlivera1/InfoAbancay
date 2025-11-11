@@ -18,14 +18,16 @@ export default function CardPost() {
                             alt={pub.title}
                             className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
-                        <span className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full font-semibold">+{' '}
-                            {pub.images ? pub.images.length : 1}
-                        </span>
+                        {pub.images && pub.images.length > 0 && (
+                            <span className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                                + {pub.images.length}
+                            </span>
+                        )}
                     </div>
-                    
+
                     {/* Información del autor */}
-                    <div className="p-5">
-                        <div className="flex items-center justify-between mb-4">
+                    <div className="p-2 sm:px-4 sm:py-2">
+                        <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-1 sm:gap-3">
                                 {pub.userPhoto ? (
                                     <img
@@ -40,9 +42,7 @@ export default function CardPost() {
                                 )}
 
                                 <div>
-                                    <h3
-                                        className="text-sm font-medium text-gray-800 truncate w-40 sm:w-80 xl:w-60 overflow-hidden whitespace-nowrap mb-1"
-                                        title={pub.userName}>
+                                    <h3 className="text-sm font-medium text-gray-800 line-clamp-1 w-40 sm:w-80 xl:w-60 overflow-hidden whitespace-nowrap mb-1">
                                         {pub.userName}
                                     </h3>
                                     <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -56,15 +56,15 @@ export default function CardPost() {
                             </div>
                             <span className="text-xs text-gray-500">{timeAgo(pub.createdAt)}</span>
                         </div>
-                        
+
                         {/* Título y descripción */}
-                        <div className="mb-5">
-                            <h2 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">{pub.title}</h2>
+                        <div className="mb-3">
+                            <h2 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">{pub.title}</h2>
                             <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">{pub.description}</p>
                         </div>
-                        
-                        <div className="border-t border-gray-200 my-4"></div>
-                        
+
+                        <div className="border-t border-gray-200 my-2"></div>
+
                         {/* Botones de interacción */}
                         <PostInteractionButtons
                             publication={pub}

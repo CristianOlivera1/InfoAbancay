@@ -54,7 +54,7 @@ export default function PostWhithoutImage() {
                     ref={scrollContainerRef}
                     className={`flex gap-6 ${styles['scroll-hover']} pb-2 mb-8`}
                 >
-                    <div className="flex gap-6 p-2 bg-white border border-gray-200 rounded-xl">
+                    <div className="flex gap-6 p-2 bg-white border border-gray-200 rounded-2xl">
                         {publications.map((publication, index) => (
                             <div
                                 key={publication.idPublication}
