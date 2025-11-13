@@ -127,8 +127,7 @@ export default function PostInteractionButtons({
                         title="Copiar enlace de publicación"
                         aria-label="Copiar enlace de publicación"
                         className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:bg-sky-50 p-1 hover:text-sky-500 hover:rounded-md transition-colors"
-                        onClick={handleCopyLink}
-                    >
+                        onClick={handleCopyLink}>
                         <Icon icon="line-md:link" width="24" height="24" />
                     </button>
                 </div>
