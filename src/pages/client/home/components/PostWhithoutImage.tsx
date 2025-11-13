@@ -3,6 +3,7 @@ import { timeAgo } from '../../../../utils/timeAgo.ts';
 import publicationsData from '../postWithoutImage.json';
 import styles from './styles.module.css';
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 
 export default function PostWhithoutImage() {
     const publications = publicationsData;
@@ -44,7 +45,16 @@ export default function PostWhithoutImage() {
 
     return (
         <div>
+
+            <div className="flex items-center justify-between mb-4">
+                
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Lo último</h2>
+                  <Link
+                  to="insertar-publicacion"
+                  className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
+                  Publicar
+                </Link>
+            </div>
             <div 
                 className="relative"
                 onMouseEnter={() => setShowButtons(true)}
@@ -58,7 +68,7 @@ export default function PostWhithoutImage() {
                         {publications.map((publication, index) => (
                             <div
                                 key={publication.idPublication}
-                                className="min-w-[250px] sm:min-w-[350px] overflow-hidden hover:bg-gray-50 hover:rounded-lg transition-shadow duration-300 group cursor-pointer relative">
+                                className="min-w-[250px] sm:min-w-[370px] overflow-hidden hover:bg-gray-50 hover:rounded-lg transition-shadow duration-300 group cursor-pointer relative">
                                 {index < publications.length - 1 && (
                                     <div className="absolute top-6 right-0 h-20 w-0.5 bg-gray-200 rounded-full group-hover:h-14 group-hover:bg-gray-400 transition-all duration-300"></div>
                                 )}
