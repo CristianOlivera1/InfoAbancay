@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { emailDomainValidator } from '../../../utils/emailValidator.ts';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -8,7 +9,15 @@ export default function Login() {
     const [rememberMe, setRememberMe] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
+    const isEmailValid = !emailDomainValidator({ value: email });
+    const isPasswordValid = password.length >= 8;
+    const isFormValid = email && isEmailValid && password && isPasswordValid;
+
     const handleSubmit = () => {
+        if (!isFormValid) {
+            alert('Por favor, completa todos los campos correctamente.');
+            return;
+        }
         console.log('Login submitted:', { email, password, rememberMe });
     };
 
@@ -37,8 +46,13 @@ export default function Login() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Ingresa tu email"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                                    email && !isEmailValid ? 'border-red-600' : 'border-gray-300'
+                                }`}
                             />
+                            {email && !isEmailValid && (
+                                <p className="text-xs text-red-600 pt-2">Por favor, ingresa un email válido.</p>
+                            )}
                         </div>
 
                         {/* Password Input */}
@@ -53,7 +67,9 @@ export default function Login() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="••••••••"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all pr-12"
+                                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all pr-12 ${
+                                        password && !isPasswordValid ? 'border-red-600' : 'border-gray-300'
+                                    }`}
                                 />
                                 <button
                                     type="button"
@@ -67,6 +83,9 @@ export default function Login() {
                                     )}
                                 </button>
                             </div>
+                            {password && !isPasswordValid && (
+                                <p className="text-xs text-red-600 pt-2">La contraseña debe tener al menos 8 caracteres.</p>
+                            )}
                         </div>
 
                         {/* Remember me & Forgot password */}
@@ -80,15 +99,20 @@ export default function Login() {
                                 />
                                 <span className="ml-2 text-sm text-gray-700">Recordarme por 30 días</span>
                             </label>
-                            <button className="text-sm transition-colors text-gray-700">
+                            {/* <button className="text-sm transition-colors text-gray-700">
                                 Has olvidado tu contraseña
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* Sign in button */}
                         <button
                             onClick={handleSubmit}
-                            className="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                            disabled={!isFormValid}
+                            className={`w-full bg-gradient-primary text-white py-3 px-4 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+                                isFormValid
+                                    ? 'hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2'
+                                    : 'bg-gray-300 cursor-not-allowed'
+                            }`}
                         >
                             Iniciar sesión
                         </button>

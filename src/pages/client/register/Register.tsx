@@ -1,14 +1,25 @@
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { emailDomainValidator } from '../../../utils/emailValidator';
 
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const isPasswordMatch = password === confirmPassword;
+    const isPasswordValid = password.length >= 8;
+    const isEmailValid = !emailDomainValidator({ value: email });
+    const isFormValid = email && isEmailValid && password && isPasswordValid && confirmPassword && isPasswordMatch;
 
     const handleSubmit = () => {
+        if (!isFormValid) {
+            return;
+        }
         console.log('Register submitted:', { email, password, rememberMe });
     };
 
@@ -37,8 +48,11 @@ export default function Register() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Ingresa tu email"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${email && !isEmailValid ? 'border-red-600' : 'border-gray-300'}`}
                             />
+                            {email && !isEmailValid && (
+                                <p className="text-xs text-red-600 pt-2">Por favor, ingresa un email válido.</p>
+                            )}
                         </div>
 
                         {/* Password Input */}
@@ -53,7 +67,7 @@ export default function Register() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="••••••••"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all pr-12"
+                                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all pr-12 ${password && !isPasswordValid ? 'border-red-600' : 'border-gray-300'}`}
                                 />
                                 <button
                                     type="button"
@@ -67,6 +81,40 @@ export default function Register() {
                                     )}
                                 </button>
                             </div>
+                            {password && !isPasswordValid && (
+                                <p className="text-xs text-red-600 pt-2">La contraseña debe tener al menos 8 caracteres.</p>
+                            )}
+                        </div>
+
+                        {/* Confirm Password Input */}
+                        <div>
+                            <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 mb-2">
+                                Confirmar Contraseña
+                            </label>
+                            <div className="relative">
+                                <input
+                                    id="confirm-password"
+                                    type={showConfirmPassword ? 'text' : 'password'}
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    placeholder="••••••••"
+                                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all pr-12 ${!isPasswordMatch && confirmPassword.length > 0 ? 'border-red-600' : 'border-gray-300'}`}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                >
+                                    {showConfirmPassword ? (
+                                        <Icon icon="iconamoon:eye-light" width="24" height="24" />
+                                    ) : (
+                                        <Icon icon="uil:eye-slash" width="24" height="24" />
+                                    )}
+                                </button>
+                            </div>
+                            {!isPasswordMatch && confirmPassword.length > 0 && (
+                                <p className="text-xs text-red-600 pt-2">Las contraseñas no coinciden.</p>
+                            )}
                         </div>
 
                         {/* Remember me & Forgot password */}
@@ -88,7 +136,8 @@ export default function Register() {
                         {/* Sign in button */}
                         <button
                             onClick={handleSubmit}
-                            className="w-full bg-gradient-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                            disabled={!isFormValid}
+                            className={`w-full bg-gradient-primary text-white py-3 px-4 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${isFormValid ? 'hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2' : 'bg-gray-300 cursor-not-allowed'}`} type='submit'
                         >
                             Registrarse
                         </button>
@@ -106,7 +155,7 @@ export default function Register() {
                     {/* Sign up link */}
                     <p className="mt-8 text-center text-gray-600">
                         Ya tienes una cuenta?{' '}
-                        <Link to="/iniciarsesion" className="font-medium text-primary hover:text-primary-dark transition-colors hover:underline">
+                        <Link to="/iniciar-sesion" className="font-medium text-primary hover:text-primary-dark transition-colors hover:underline">
                             Iniciar sesión
                         </Link>
                     </p>
