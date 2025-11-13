@@ -6,6 +6,7 @@ import Footer from '../shared/client/footer/Footer';
 import Login from '../pages/client/login/Login';
 import Register from '../pages/client/register/Register';
 import InsertPublication from '../pages/client/insertPublication/InsertPublication';
+import CategoryPosts from '../pages/client/categoryDetails/CategoryPosts';
 
 export default function ClientRoutes() {
   return (
@@ -19,6 +20,7 @@ export default function ClientRoutes() {
           <Route path="/registrarse" element={<Register />} />
           <Route path="/detalles-publicacion" element={<PublicationDetails />} />
           <Route path="/insertar-publicacion" element={<InsertPublication />} />
+          <Route path="/categoria/:nameCategory" element={<CategoryPosts />} />
         </Routes>
       </main>
       <Footer />
