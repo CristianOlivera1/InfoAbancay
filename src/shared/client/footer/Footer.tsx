@@ -40,13 +40,13 @@ export default function Footer() {
               <div className="flex flex-col text-center sm:flex-row gap-4 mt-6">
                 <Link
                   to="/login"
-                  className="px-6 py-2.5 border-2 border-white text-white rounded-lg hover:bg-white hover:text-primary transition-all duration-300 font-medium text-shadow-lg"
+                  className="px-4 py-2 border-2 border-white text-white rounded-lg hover:bg-white hover:text-primary transition-all duration-300 font-medium text-shadow-lg"
                 >
                   Iniciar sesión
                 </Link>
                 <Link
                   to="/register"
-                  className="px-6 py-2.5 bg-gradient-primary text-white rounded-lg hover:bg-pink-600 transition-all duration-300 font-medium"
+                  className="px-4 py-2 bg-gradient-primary text-white rounded-lg hover:bg-pink-600 transition-all duration-300 font-medium"
                 >
                   Registrarse
                 </Link>
