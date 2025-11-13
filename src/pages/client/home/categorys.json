@@ -28,5 +28,11 @@
     "name": "Reporte ciudadano",
     "description": "Canal para que los ciudadanos reporten incidencias o sugerencias.",
     "icon": "streamline-ultimate-color:phone-type"
+  },
+    {
+    "idCategory": 6,
+    "name": "Deportes",
+    "description": "Sección dedicada a eventos deportivos.",
+    "icon": "noto-v1:soccer-ball"
   }
 ]

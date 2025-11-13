@@ -5,7 +5,8 @@
         "createdAt": "2024-11-01",
         "views": 1240,
         "description": "Programa integral para reducir residuos y promover áreas verdes en la comunidad, que incluye campañas de reciclaje, plantación de árboles y talleres educativos en escuelas. Se busca involucrar a vecinos, empresas y colegios para crear hábitos sostenibles a largo plazo.",
-        "userName": "María Gómez becerra alcaldesa"
+        "userName": "María Gómez becerra alcaldesa",
+        "idCategory": 1
     },
     {
         "idPublication": 2,
@@ -13,7 +14,8 @@
         "createdAt": "2025-03-10",
         "views": 3420,
         "description": "Evento anual con música, danza y artes locales pensado para toda la familia, con escenarios al aire libre, ferias de arte y espacios para emprendimientos culturales. Habrá actividades paralelas como talleres, exposiciones y ciclos de cine que promueven la diversidad y la participación ciudadana.",
-        "userName": "Fundación Cultura Viva"
+        "userName": "Fundación Cultura Viva",
+        "idCategory": 2
     },
     {
         "idPublication": 3,
@@ -21,7 +23,8 @@
         "createdAt": "2024-08-20",
         "views": 2750,
         "description": "Actualización detallada sobre obras públicas recientes y próximas, incluyendo mejoras en vías, drenaje y servicios básicos. El informe describe plazos, presupuestos y el impacto esperado en la movilidad urbana y la calidad de vida de los barrios beneficiados.",
-        "userName": "Ingeniería y Obras S.A."
+        "userName": "Ingeniería y Obras S.A.",
+        "idCategory": 1
     },
     {
         "idPublication": 4,
@@ -29,7 +32,8 @@
         "createdAt": "2025-05-12",
         "views": 1980,
         "description": "Iniciativas para aumentar la prevención y el acceso a servicios médicos, con jornadas de vacunación, controles preventivos y campañas de concienciación sobre hábitos saludables. Se prioriza la llegada a zonas rurales y poblaciones vulnerables mediante unidades móviles y coordinación con centros locales.",
-        "userName": "Dr. Carlos Pérez"
+        "userName": "Dr. Carlos Pérez",
+        "idCategory": 4
     },
     {
         "idPublication": 5,
@@ -37,7 +41,8 @@
         "createdAt": "2024-09-15",
         "views": 1650,
         "description": "Proyectos para modernizar escuelas, actualizar contenidos curriculares y capacitar docentes en nuevas metodologías pedagógicas. Incluye inversión en infraestructura tecnológica, bibliotecas y programas de apoyo educativo para reducir la deserción y mejorar resultados académicos.",
-        "userName": "Juan Hernández"
+        "userName": "Juan Hernández",
+        "idCategory": 1
     },
     {
         "idPublication": 6,
@@ -45,7 +50,8 @@
         "createdAt": "2025-01-20",
         "views": 4120,
         "description": "Nuevos recorridos, señalización y puntos de información para potenciar el turismo local, con énfasis en turismo sostenible y la valorización del patrimonio natural y cultural. Se integran circuitos gastronómicos, rutas guiadas y alianzas con prestadores para mejorar la experiencia del visitante.",
-        "userName": "Oficina de Turismo Municipal"
+        "userName": "Oficina de Turismo Municipal",
+        "idCategory": 2
     },
     {
         "idPublication": 7,
@@ -53,6 +59,7 @@
         "createdAt": "2024-12-05",
         "views": 870,
         "description": "Programas de apoyo a emprendedores y pequeñas empresas que incluyen microcréditos, formación en gestión y marketing, y espacios de comercialización. La iniciativa busca dinamizar la economía local mediante redes de cooperación, mentoría y ferias que impulsen productos y servicios locales.",
-        "userName": "Emprende Local S.R.L."
+        "userName": "Emprende Local S.R.L.",
+        "idCategory": 3
     }
 ]
