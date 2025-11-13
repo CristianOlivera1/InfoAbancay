@@ -26,14 +26,14 @@ export default function PublicationDetails() {
                     <article className="bg-white rounded-xl shadow-sm p-3 sm:p-6 md:p-8">
                         {/* Breadcrumbs */}
                         <div className="flex flex-wrap gap-2 mb-4">
-                            <Link className="text-sm font-medium text-gray-500" to="/">Inicio</Link>
+                            <Link className="text-sm font-medium text-gray-500 hover:underline" to="/">Inicio</Link>
                             <span className="text-sm font-medium text-gray-500 ">/</span>
-                            <Link className="text-sm font-medium text-gray-500" to="/#loultimo">Lo último</Link>
+                            <Link className="text-sm font-medium text-gray-500 hover:underline" to="/#loultimo">Lo último</Link>
                             <span className="text-sm font-medium text-gray-500  hidden sm:inline">/</span>
                             <span className="text-sm font-medium text-[#111418]  line-clamp-1 sm:line-clamp-none">Historic Downtown Street Fair Attracts Record Crowds</span>
                         </div>
                         {/* Headline */}
-                        <h1 className="text-[#111418]  tracking-tight text-3xl md:text-4xl font-bold leading-tight text-left pb-3 pt-2">Historic Downtown Street Fair Attracts Record Crowds</h1>
+                        <h1 className="text-[#111418] tracking-tight text-2xl md:text-3xl font-bold leading-tight text-left pb-3 pt-2">Historic Downtown Street Fair Attracts Record Crowds</h1>
                         {/* Post Meta */}
                         <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 border-y border-gray-200 py-4">
                             <div className="flex items-center gap-3">
