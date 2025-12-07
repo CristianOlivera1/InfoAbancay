@@ -60,10 +60,8 @@ export default function LocationPicker({
         }
       );
 
-      // Añadir una capa por defecto
       calles.addTo(map);
 
-      // Control para alternar entre capas
       L.control.layers(
         {
           'Calles': calles,
@@ -71,20 +69,17 @@ export default function LocationPicker({
 
         },
         undefined,
-        { collapsed: false } // muestra el control expandido
+        { collapsed: false }
       ).addTo(map);
 
       mapRef.current = map;
 
-      // Forzar actualización del tamaño del mapa
       setTimeout(() => {
         map.invalidateSize();
       }, 100);
 
-      // Establecer ubicación por defecto
       updateLocationInternal(DEFAULT_COORDS[0], DEFAULT_COORDS[1]);
 
-      // Intentar obtener ubicación del usuario
       setTimeout(() => {
         requestUserLocation();
       }, 500);
@@ -104,14 +99,12 @@ export default function LocationPicker({
     };
   }, []);
 
-  // Función interna para actualizar ubicación
   const updateLocationInternal = async (lat: number, lng: number) => {
     const newLocation: LocationData = {
       latitude: lat,
       longitude: lng
     };
 
-    // Obtener dirección
     try {
       const addressText = await reverseGeocode(lat, lng);
       newLocation.address = addressText;
@@ -121,26 +114,20 @@ export default function LocationPicker({
       setAddress(`${lat.toFixed(6)}, ${lng.toFixed(6)}`);
     }
 
-    // Notificar cambio al padre
     onLocationChange?.(newLocation);
 
-    // Finalizar loading
     setLoading(false);
 
-    // Actualizar mapa
     if (mapRef.current) {
       mapRef.current.setView([lat, lng], 15);
 
-      // Forzar recálculo del tamaño
       setTimeout(() => {
         mapRef.current?.invalidateSize();
       }, 100);
 
-      // Crear o actualizar marcador
       if (markerRef.current) {
         markerRef.current.setLatLng([lat, lng]);
       } else {
-        // Crear icono personalizado
         const customIcon = L.icon({
           iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -155,7 +142,6 @@ export default function LocationPicker({
           icon: customIcon
         }).addTo(mapRef.current);
 
-        // Evento cuando se arrastra el marcador
         marker.on('dragend', async (e) => {
           const target = e.target as L.Marker;
           const position = target.getLatLng();
@@ -167,7 +153,6 @@ export default function LocationPicker({
     }
   };
 
-  // Solicitar ubicación del usuario
   const requestUserLocation = async () => {
     setError('');
 
@@ -207,7 +192,6 @@ export default function LocationPicker({
     );
   };
 
-  // Geocodificación inversa
   const reverseGeocode = async (lat: number, lng: number): Promise<string> => {
     try {
       const response = await fetch(
@@ -230,7 +214,6 @@ export default function LocationPicker({
     }
   };
 
-  // Buscar ubicación por texto
   const searchLocation = async (searchText: string) => {
     if (!searchText.trim()) return;
 
@@ -270,7 +253,6 @@ export default function LocationPicker({
           <span className="text-gray-500 text-sm">(opcional)</span>
         </p>
 
-        {/* Input de búsqueda con botón de ubicación actual */}
         <div className="flex gap-2 mb-3">
           <div className="relative flex-1 text-sm ">
             <input
@@ -296,7 +278,6 @@ export default function LocationPicker({
           </div>
         </div>
 
-        {/* Mensaje de error */}
         {error && (
           <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-start gap-2">
@@ -306,7 +287,6 @@ export default function LocationPicker({
           </div>
         )}
 
-        {/* Contenedor del mapa */}
         <div className="relative border border-gray-300 rounded-lg overflow-hidden bg-gray-100">
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
@@ -317,14 +297,12 @@ export default function LocationPicker({
             </div>
           )}
 
-          {/* Mapa */}
           <div
             ref={mapContainerRef}
             className="w-full h-80 z-0"
           />
         </div>
 
-        {/* Instrucciones */}
         <p className="text-xs text-gray-500 mt-2">
           Arrastra el marcador o busca una dirección para cambiar la ubicación
         </p>

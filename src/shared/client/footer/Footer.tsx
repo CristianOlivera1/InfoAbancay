@@ -55,7 +55,6 @@ export default function Footer() {
 
             <div className="col-span-2 lg:col-span-2">
               <div className="flex flex-col sm:flex-row sm:justify-between gap-6 text-white">
-                {/* Navegación 1 */}
                 <div className="flex-1">
                   <h3 className="text-md font-bold mb-4">Navegación</h3>
                   <nav className="flex flex-col gap-3">
@@ -67,7 +66,6 @@ export default function Footer() {
                   </nav>
                 </div>
 
-                {/* Navegación 2 */}
                 <div className="flex-1">
                   <h3 className="text-md font-bold mb-4">Navegación 2</h3>
                   <nav className="flex flex-col gap-3">

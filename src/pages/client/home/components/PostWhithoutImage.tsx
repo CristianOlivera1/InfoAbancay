@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { timeAgo } from '../../../../utils/timeAgo.ts';
 import publicationsData from '../postWithoutImage.json';
-import styles from './styles.module.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 
@@ -51,7 +50,7 @@ export default function PostWhithoutImage() {
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Lo último</h2>
                   <Link
                   to="insertar-publicacion"
-                  className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
+                  className="border bg-white border-gray-200 text-gray-800 px-4 py-2 rounded hover:text-black transition-colors hover:shadow-xs hover:border-gray-300">
                   Publicar
                 </Link>
             </div>
@@ -62,7 +61,7 @@ export default function PostWhithoutImage() {
             >
                 <div 
                     ref={scrollContainerRef}
-                    className={`flex gap-6 ${styles['scroll-hover']} pb-2 mb-8`}
+                    className={`flex gap-6 scroll-hover pb-2 mb-8`}
                 >
                     <div className="flex gap-6 p-2 bg-white border border-gray-200 rounded-2xl">
                         {publications.map((publication, index) => (

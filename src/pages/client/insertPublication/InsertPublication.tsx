@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import LocationPicker from "./components/LocationPicker";
 
 export default function InsertPublication() {
-    const [description, setDescription] = useState("## Escribe tu publicación aquí");
+    const [description, setDescription] = useState("");
     const [title, setTitle] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
     
@@ -16,7 +16,6 @@ export default function InsertPublication() {
     const descriptionLength = description.length;
     const isDescriptionValid = descriptionLength >= 10 && descriptionLength <= 1500;
     
-    // Validación de campos obligatorios
     const isFormValid = isTitleValid && isDescriptionValid && selectedCategory !== null;
 
     return (
@@ -106,14 +105,14 @@ export default function InsertPublication() {
                     <div className="pt-4 flex justify-end">
                         <button 
                             disabled={!isFormValid}
-                            className={`flex min-w-[120px] max-w-[480px] items-center justify-center overflow-hidden rounded-lg px-4 py-2 text-base font-bold leading-normal tracking-[0.015em] transition-colors ${
+                            className={`flex min-w-[120px] max-w-[480px] items-center justify-center overflow-hidden rounded-sm px-4 py-2 text-base font-bold leading-normal tracking-[0.015em] transition-colors ${
                                 isFormValid 
                                     ? 'bg-primary text-white cursor-pointer hover:bg-primary/90' 
                                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                             }`} 
                             type="submit"
                         >
-                            <span className="truncate">Publicar</span>
+                            <span>Publicar</span>
                         </button>
                     </div>
                 </form>

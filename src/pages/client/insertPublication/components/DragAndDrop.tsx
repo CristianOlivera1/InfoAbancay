@@ -29,17 +29,14 @@ export default function FileUpload({
 
     // Validar archivo
     const validateFile = (file: File): string | null => {
-        // Validar tipo
         if (!acceptedFormats.includes(file.type)) {
             return `Formato no permitido. Solo se aceptan: ${acceptedFormats.map(f => f.split('/')[1].toUpperCase()).join(', ')}`;
         }
 
-        // Validar tamaño
         if (file.size > maxSizeInBytes) {
             return `El archivo "${file.name}" excede el tamaño máximo de ${maxSizeInMB}MB`;
         }
 
-        // Validar cantidad máxima
         if (files.length >= maxFiles) {
             return `Solo puedes subir hasta ${maxFiles} archivos`;
         }
@@ -55,7 +52,6 @@ export default function FileUpload({
         const newFiles: FileWithPreview[] = [];
 
         Array.from(fileList).forEach((file) => {
-            // Validar si ya tenemos el máximo de archivos
             if (files.length + newFiles.length >= maxFiles) {
                 setError(`Solo puedes subir hasta ${maxFiles} archivos`);
                 return;
@@ -67,7 +63,6 @@ export default function FileUpload({
                 return;
             }
 
-            // Crear preview
             const preview = URL.createObjectURL(file);
             newFiles.push({
                 file,
@@ -80,45 +75,37 @@ export default function FileUpload({
             const updatedFiles = [...files, ...newFiles];
             setFiles(updatedFiles);
 
-            // Notificar cambios al padre
             if (onFilesChange) {
                 onFilesChange(updatedFiles.map(f => f.file));
             }
         }
     };
 
-    // Manejar click en el área de upload
     const handleClick = () => {
         fileInputRef.current?.click();
     };
 
-    // Manejar cambio en input file
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         processFiles(e.target.files);
-        // Resetear input para permitir subir el mismo archivo
         e.target.value = '';
     };
 
-    // Manejar drag over
     const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(true);
     };
 
-    // Manejar drag leave
     const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
     };
 
-    // Manejar drop
     const handleDrop = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
         processFiles(e.dataTransfer.files);
     };
 
-    // Eliminar archivo
     const removeFile = (id: string) => {
         const fileToRemove = files.find(f => f.id === id);
         if (fileToRemove) {
@@ -135,12 +122,10 @@ export default function FileUpload({
         setError('');
     };
 
-    // Obtener extensión de archivo
     const getFileExtension = (filename: string): string => {
         return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2).toUpperCase();
     };
 
-    // Verificar si es video
     const isVideo = (file: File): boolean => {
         return file.type.startsWith('video/');
     };
@@ -154,7 +139,6 @@ export default function FileUpload({
                 </span>
             </h3>
 
-            {/* Área de upload */}
             <div
                 onClick={handleClick}
                 onDragOver={handleDragOver}
@@ -177,7 +161,6 @@ export default function FileUpload({
                 </p>
             </div>
 
-            {/* Input file oculto */}
             <input
                 ref={fileInputRef}
                 type="file"
@@ -187,7 +170,6 @@ export default function FileUpload({
                 className="hidden"
             />
 
-            {/* Mensaje de error */}
             {error && (
                 <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
                     <span className="material-symbols-outlined text-red-500 text-sm"> <Icon icon="line-md:alert-circle-loop" width="24" height="24" /></span>
@@ -195,12 +177,10 @@ export default function FileUpload({
                 </div>
             )}
 
-            {/* Preview de archivos */}
             {files.length > 0 && (
                 <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {files.map((fileWithPreview) => (
                         <div key={fileWithPreview.id} className="relative group">
-                            {/* Preview de imagen o video */}
                             {isVideo(fileWithPreview.file) ? (
                                 <div className="relative aspect-square bg-gray-900 rounded-lg overflow-hidden">
                                     <video
@@ -223,7 +203,6 @@ export default function FileUpload({
                                 />
                             )}
 
-                            {/* Información del archivo */}
                             <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black to-transparent p-2 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <p className="text-white text-xs truncate">
                                     {fileWithPreview.file.name}
@@ -233,7 +212,6 @@ export default function FileUpload({
                                 </p>
                             </div>
 
-                            {/* Botón eliminar */}
                             <button
                                 onClick={() => removeFile(fileWithPreview.id)}
                                 className="absolute top-1.5 right-1.5 bg-black/50 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"

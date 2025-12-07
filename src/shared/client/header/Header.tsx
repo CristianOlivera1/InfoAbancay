@@ -3,13 +3,19 @@ import { Icon } from "@iconify/react";
 import { useState } from 'react';
 import ModalCategories from './components/ModalCategories';
 import MobileMenu from './components/MobileMenu';
+import SearchModal from './components/SearchModal';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
     const [menuAbierto, setMenuAbierto] = useState(false);
+    const [searchModalOpen, setSearchModalOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto);
+    };
+
+    const toggleSearchModal = () => {
+        setSearchModalOpen(!searchModalOpen);
     };
 
     return (
@@ -23,7 +29,6 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* Desktop Navigation */}
                     <div className="hidden lg:block items-center space-y-2">
                         <div className="flex gap-4">
                             <Link to="/" className="text-gray-800 hover:text-gray-900">
@@ -50,13 +55,16 @@ export default function Header() {
                         <input
                             type="text"
                             placeholder="Buscar..."
-                            className="flex-1 min-w-0 bg-transparent text-gray-600 placeholder-gray-400 outline-none px-2"
+                            className="flex-1 min-w-0 bg-transparent text-gray-600 placeholder-gray-400 outline-none px-2 cursor-pointer"
+                            onClick={toggleSearchModal}
+                            readOnly
                         />
-                        <button className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors shrink-0">
+                        <button 
+                            onClick={toggleSearchModal}
+                            className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors shrink-0">
                             <Icon icon="lucide:search" width="20" height="20" />
                         </button>
                     </div>
-                    {/* Desktop Auth Buttons */}
                     <div className="hidden lg:flex space-x-4">
                         <Link
                             to="/iniciar-sesion"
@@ -70,7 +78,6 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* Mobile Hamburger Button */}
                     <div className="flex lg:hidden justify-end">
                         <button
                             type="button"
@@ -92,7 +99,6 @@ export default function Header() {
                 </nav>
             </div>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {menuAbierto && (
                     <motion.div
@@ -106,7 +112,6 @@ export default function Header() {
                 )}
             </AnimatePresence>
 
-            {/* Mobile Menu */}
             <AnimatePresence>
                 {menuAbierto && (
                     <motion.div
@@ -121,6 +126,8 @@ export default function Header() {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <SearchModal isOpen={searchModalOpen} onClose={toggleSearchModal} />
         </header>
     )
 }

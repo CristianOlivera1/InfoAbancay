@@ -10,7 +10,7 @@ export default function CardPost() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {publications.map((pub) => (
-                <div key={pub.idPublication} className="bg-white rounded-2xl shadow-sm border border-gray-50 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300 hover:border hover:border-gray-300 group">
+                <div key={pub.idPublication} className="bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-sm transition-all duration-300 hover:border hover:border-gray-300 group">
                     {/* Imagen principal */}
                     <div className="relative">
                         <img
@@ -77,7 +77,6 @@ export default function CardPost() {
                             onDislike={postInteractions.handleDislike}
                             onComment={postInteractions.handleComment}
                             onBookmark={postInteractions.handleBookmark}
-                            onShare={postInteractions.handleShare}
                         />
                     </div>
                 </div>

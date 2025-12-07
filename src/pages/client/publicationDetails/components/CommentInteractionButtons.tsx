@@ -42,7 +42,6 @@ export function CommentInteractionButtons({
 }: CommentInteractionButtonsProps) {
     return (
         <div className="space-y-2">
-            {/* Botones de interacción */}
             <div className="flex items-center gap-4">
                 {/* Like */}
                 <button

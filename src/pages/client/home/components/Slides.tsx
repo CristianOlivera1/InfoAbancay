@@ -127,8 +127,7 @@ export default function Slides() {
                 </button>
               </div>
 
-              {/* Descripción debajo con animación */}
-              <div className={`flex flex-col sm:flex-row items-start justify-center bg-primary-7 p-4 rounded-b-lg shadow-md gap-0 sm:gap-10 ${index === currentSlide ? styles.fadeEnter : ''
+              <div className={`flex flex-col sm:flex-row items-start justify-center bg-cover bg-center bg-[url('/src/assets/svg/mesh-gradient-category.svg')] p-4 rounded-b-lg shadow-md gap-0 sm:gap-10 ${index === currentSlide ? styles.fadeEnter : ''
                 }`}>
                 <div className="flex flex-col sm:flex-row gap-1">
                   <h3 className="text-md font-bold mb-2 text-gray-800">{slide.title}:</h3>

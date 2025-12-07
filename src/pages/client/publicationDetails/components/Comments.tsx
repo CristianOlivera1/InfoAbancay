@@ -1,7 +1,6 @@
 import { useCommentInteractions, type Comment } from './CommentInteractions';
 import { CommentInteractionButtons, ReplyInteractionButtons } from './CommentInteractionButtons';
 
-// Datos de ejemplo - en una aplicación real, estos vendrían de una API
 const mockComments: Comment[] = [
     {
         id: 1,
@@ -123,7 +122,6 @@ export default function Comments() {
                                     <p className="text-sm text-gray-700">{comment.content}</p>
                                 </div>
                                 
-                                {/* Botones de interacción del comentario */}
                                 <div className="mt-2 px-2">
                                     <CommentInteractionButtons
                                         comment={comment}
@@ -143,7 +141,6 @@ export default function Comments() {
                             </div>
                         </div>
 
-                        {/* Respuestas al comentario */}
                         {comment.replies && comment.replies.length > 0 && (
                             <div className="ml-6 sm:ml-12 space-y-4 border-l-2 border-gray-100 pl-4">
                                 {comment.replies.map((reply) => (

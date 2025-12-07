@@ -13,8 +13,6 @@ import {
   ListsToggle,
   linkDialogPlugin,
   CreateLink,
-  InsertImage,
-  InsertTable,
   tablePlugin,
   imagePlugin,
   ConditionalContents,
@@ -43,8 +41,8 @@ const MarkdownEditor = ({ value, editorRef, fieldChange }: Props) => {
 
   return (
     <>
-  <style>
-    {`
+      <style>
+        {`
       ul {
         list-style-type: disc;
         padding-left: 1.5rem;
@@ -54,52 +52,57 @@ const MarkdownEditor = ({ value, editorRef, fieldChange }: Props) => {
         list-style-type: decimal;
         padding-left: 1.5rem;
       }
+      .mdxeditor-popup-container {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0 !important; /* evita que genere espacio */
+      }
     `}
-  </style>
-    <MDXEditor
-      key={isDark ? "dark" : "light"}
-      markdown={value}
-      ref={editorRef}
-      onChange={fieldChange}
-      className="background-light800_dark200 markdown-editor grid w-full"
-      plugins={[
-        headingsPlugin(),
-        listsPlugin(),
-        linkPlugin(),
-        linkDialogPlugin(),
-        quotePlugin(),
-        markdownShortcutPlugin(),
-        tablePlugin(),
-        imagePlugin(),
-        diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: "" }),
-        toolbarPlugin({
-          toolbarContents: () => (
-            <ConditionalContents
-              options={[
-                {
-                  fallback: () => (
-                    <>
-                      <UndoRedo />
-                      <Separator />
-                      <BoldItalicUnderlineToggles />
-                      <CodeToggle />
-                      <Separator />
-                      <ListsToggle />
-                      <Separator />
-                      <CreateLink />
-                      <InsertImage />
-                      <Separator />
-                      <InsertTable />
-                      <Separator />
-                    </>
-                  ),
-                },
-              ]}
-            />
-          ),
-        }),
-      ]}
-    />
+      </style>
+      <MDXEditor
+        key={isDark ? "dark" : "light"}
+        markdown={value}
+        ref={editorRef}
+        onChange={fieldChange}
+        className="background-light800_dark200 markdown-editor w-full h-60 overflow-y-auto"
+        plugins={[
+          headingsPlugin(),
+          listsPlugin(),
+          linkPlugin(),
+          linkDialogPlugin(),
+          quotePlugin(),
+          markdownShortcutPlugin(),
+          tablePlugin(),
+          imagePlugin(),
+          diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: "" }),
+          toolbarPlugin({
+            toolbarContents: () => (
+              <ConditionalContents
+                options={[
+                  {
+                    fallback: () => (
+                      <>
+                        <UndoRedo />
+                        <Separator />
+                        <BoldItalicUnderlineToggles />
+                        <CodeToggle />
+                        <Separator />
+                        <ListsToggle />
+                        <Separator />
+                        <CreateLink />
+                        <Separator />
+                        <Separator />
+                      </>
+                    ),
+                  },
+                ]}
+              />
+            ),
+          }),
+        ]}
+      />
     </>
   );
 };

@@ -1,11 +1,9 @@
-// utils/emailValidator.ts
 export function emailDomainValidator(control: { value: string }) {
   const email = control.value;
   if (!email) {
     return null;
   }
 
-  // Patrón básico de email
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
 
   if (!emailPattern.test(email)) {
