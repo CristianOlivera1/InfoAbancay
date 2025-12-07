@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import categorys from '../../../../pages/client/home/categorys.json';
+import { Link } from "react-router-dom";
 
 export default function ModalCategories() {
   return (
@@ -16,13 +17,13 @@ export default function ModalCategories() {
                 className="w-10 h-10 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
             </div>
             <div className="flex-auto">
-              <a
+              <Link
                 className="block font-semibold text-gray-600 cursor-pointer"
-                href="#"
+                to={`/categoria/${category.name.toLowerCase()}`}
               >
                 {category.name}
                 <span className="absolute inset-0"></span>
-              </a>
+              </Link>
               <p className="mt-1 text-gray-600 line-clamp-2">
                 {category.description}
               </p>

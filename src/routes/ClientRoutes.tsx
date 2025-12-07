@@ -23,6 +23,7 @@ export default function ClientRoutes() {
             <Route path="/insertar-publicacion" element={<InsertPublication />} />
             <Route path="/categoria/:nameCategory" element={<CategoryPosts />} />
             <Route path="/detalles-publicacion" element={<PublicationDetails />} />
+            <Route path="/mis-publicaciones" element={<PublicationDetails />} />
           </Routes>
       </main>
       <Footer />

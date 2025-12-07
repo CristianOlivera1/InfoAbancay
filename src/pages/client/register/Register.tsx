@@ -29,7 +29,6 @@ export default function Register() {
 
     return (
         <div className="py-20 sm:py-30 flex bg-white">
-            {/* Left side - Form */}
             <div className="w-full h-full lg:w-1/2 flex items-center justify-center p-4 sm:p-8">
                 <div className="w-full max-w-md">
                     <div className="mb-8">
@@ -55,7 +54,6 @@ export default function Register() {
                             )}
                         </div>
 
-                        {/* Password Input */}
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                                 Contraseña
@@ -86,7 +84,6 @@ export default function Register() {
                             )}
                         </div>
 
-                        {/* Confirm Password Input */}
                         <div>
                             <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 mb-2">
                                 Confirmar Contraseña
@@ -117,7 +114,6 @@ export default function Register() {
                             )}
                         </div>
 
-                        {/* Remember me & Forgot password */}
                         <div className="flex items-center justify-between">
                             <label className="flex items-center cursor-pointer">
                                 <input
@@ -133,7 +129,6 @@ export default function Register() {
                             </button>
                         </div>
 
-                        {/* Sign in button */}
                         <button
                             onClick={handleSubmit}
                             disabled={!isFormValid}
@@ -142,7 +137,6 @@ export default function Register() {
                             Registrarse
                         </button>
 
-                        {/* Sign in with Google */}
                         <button
                             onClick={handleGoogleSignIn}
                             className="w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all flex items-center justify-center gap-3"
@@ -152,7 +146,6 @@ export default function Register() {
                         </button>
                     </div>
 
-                    {/* Sign up link */}
                     <p className="mt-8 text-center text-gray-600">
                         Ya tienes una cuenta?{' '}
                         <Link to="/iniciar-sesion" className="font-medium text-primary hover:text-primary-dark transition-colors hover:underline">
@@ -162,7 +155,6 @@ export default function Register() {
                 </div>
             </div>
 
-            {/* Right side - Image */}
             <div className="hidden lg:block lg:w-1/2 relative">
                 <img
                     src="https://viajeronline.com/wp-content/uploads/Tips-para-viajar-a-Abancay-Apurimac-Mejor-Clima-Consejos-y-Hoteles-baratos-en-tu-viaje-1.png"

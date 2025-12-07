@@ -17,12 +17,10 @@ export default function CategoryPosts() {
     const postInteractions = usePostInteractions();
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
-    // Encontrar la categoría actual basada en el parámetro de la URL
     const currentCategory = categorys.find(cat =>
         cat.name.toLowerCase().replace(/\s+/g, '-') === nameCategory
     );
 
-    // Manejar el caso especial de "todas"
     const isAllCategories = nameCategory === 'todas';
 
     useEffect(() => {
@@ -31,7 +29,7 @@ export default function CategoryPosts() {
         } else if (isAllCategories) {
             setSelectedCategoryId(null);
         }
-    }, [currentCategory, isAllCategories]);    // Filtrar publicaciones por categoría seleccionada
+    }, [currentCategory, isAllCategories]); 
     const filteredPostsWithoutImage = postWithoutImageData.filter(post =>
         selectedCategoryId ? post.idCategory === selectedCategoryId : true
     );
@@ -50,7 +48,6 @@ export default function CategoryPosts() {
     };
 
     const handleAllCategoriesSelect = () => {
-        // Navegar a la primera categoría disponible o a una página general
         navigate('/categoria/todas');
     };
 
@@ -131,7 +128,7 @@ export default function CategoryPosts() {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 {/* Sidebar - Categories */}
                 <aside className="lg:col-span-1">
-                    <div className='gap-6 scroll-hover p-4 mb-4 sm:mb-8 bg-white border border-gray-200 rounded-2xl'>
+                    <div className='gap-6 scroll-hover p-4 mb-4 sm:mb-8 bg-white border border-gray-200 rounded-2xl sticky top-25'>
                         <h2 className="text-xl font-bold text-gray-900 mb-4">Categorías</h2>
                         <div className="flex gap-2 sm:flex-col sm:space-y-2">
                             <button
