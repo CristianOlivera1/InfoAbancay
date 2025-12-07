@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export type AnimationType = 'like' | 'dislike' | 'comment' | 'bookmark' | 'share';
+export type AnimationType = 'like' | 'dislike' | 'comment' | 'bookmark'| 'copy';
 
 export function animateButton(element: HTMLElement, type: AnimationType) {
     const tl = gsap.timeline();
@@ -74,27 +74,28 @@ export function animateButton(element: HTMLElement, type: AnimationType) {
             }
             break;
         }
-        case 'share':
-            tl.to(element, {
-                scale: 0.85,
-                rotate: -15,
-                opacity: 0.9,
-                duration: 0.12,
-                transformOrigin: "center center"
-            })
-                .to(element, {
-                    rotate: 360,
-                    scale: 1.25,
-                    opacity: 1,
-                    duration: 0.5,
-                    ease: "expo.out"
+        case 'copy': {
+            const svg = element.querySelector('svg');
+            if (svg) {
+                tl.to(svg, {
+                    scale: 0.8,
+                    y: -3,
+                    duration: 0.15,
+                    transformOrigin: "center center"
                 })
-                .to(element, {
-                    scale: 1,
-                    rotate: 0,
-                    duration: 0.25,
-                    ease: "back.out(1.8)"
-                });
+                    .to(svg, {
+                        scale: 1.15,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "back.out(2)"
+                    })
+                    .to(svg, {
+                        scale: 1,
+                        duration: 0.15,
+                        ease: "power2.out"
+                    });
+            }
             break;
+        }
     }
 }

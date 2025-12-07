@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import type { Publication } from './PostInteractions';
 import Alert from '../../../../shared/client/alert/alert.tsx';
+import { animateButton } from './postAnimations';
 
 interface PostInteractionButtonsProps {
     publication: Publication;
@@ -14,7 +15,6 @@ interface PostInteractionButtonsProps {
     onDislike: (pubId: number, event: React.MouseEvent<HTMLButtonElement>) => void;
     onComment: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onBookmark: (pubId: number, event: React.MouseEvent<HTMLButtonElement>) => void;
-    onShare: (pub: Publication, event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function PostInteractionButtons({
@@ -30,8 +30,11 @@ export default function PostInteractionButtons({
     onBookmark
 }: PostInteractionButtonsProps) {
     const [showAlert, setShowAlert] = useState(false);
-    
-    const handleCopyLink = async () => {
+
+    const handleCopyLink = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        const button = event.currentTarget;
+        animateButton(button, 'copy');
+        
         try {
             await navigator.clipboard.writeText(window.location.origin + '/publicacion/' + publication.idPublication);
             setShowAlert(true);
@@ -39,7 +42,7 @@ export default function PostInteractionButtons({
             // Si falla, podrías mostrar un alert de error
         }
     };
-    
+
     return (
         <div className="relative">
             {showAlert && (
@@ -97,7 +100,6 @@ export default function PostInteractionButtons({
 
                 {/* Fijar */}
                 <div className="flex items-center gap-2 text-gray-500">
-                    {/* Fijar */}
                     <button
                         type="button"
                         title="Fijar publicación"
@@ -128,7 +130,11 @@ export default function PostInteractionButtons({
                         aria-label="Copiar enlace de publicación"
                         className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:bg-sky-50 p-1 hover:text-sky-500 hover:rounded-md transition-colors"
                         onClick={handleCopyLink}>
-                        <Icon icon="line-md:link" width="24" height="24" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="none" stroke="currentColor" strokeDasharray="28" strokeDashoffset="28" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="28;0" />
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </div>

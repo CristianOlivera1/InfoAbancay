@@ -86,12 +86,6 @@ export const usePostInteractions = () => {
         });
     };
 
-    const handleShare = (pub: Publication, event: React.MouseEvent<HTMLButtonElement>) => {
-        const button = event.currentTarget;
-        animateButton(button, 'share');
-        navigator.share?.({ title: pub.title, url: window.location.href });
-    };
-
     return {
         likedPosts,
         dislikedPosts,
@@ -101,7 +95,6 @@ export const usePostInteractions = () => {
         handleLike,
         handleDislike,
         handleComment,
-        handleBookmark,
-        handleShare
+        handleBookmark
     };
 };
