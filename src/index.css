@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   font-family: "Inter", sans-serif;
 }
@@ -57,4 +56,16 @@ button{
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
+}
+
+.scroll-hover {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.scroll-hover:hover {
+  scrollbar-color: #9ca3af #f1f1f1;
 }
