@@ -18,7 +18,6 @@ export default function Home() {
     <div className="container mx-auto px-4 sm:px-6 xl:px-32 mt-8">
       <Slides />
       <Categories />
-      {/* <Featured /> */}
       <NewPost />
     </div>
   );
