@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useState, useEffect, useRef } from 'react';
 import categorys from '../home/categorys.json';
@@ -11,6 +11,7 @@ import PostInteractionButtons from '../home/components/PostInteractionButtons';
 
 export default function CategoryPosts() {
     const { nameCategory } = useParams<{ nameCategory: string }>();
+    const navigate = useNavigate();
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
     const [showButtons, setShowButtons] = useState(false);
     const postInteractions = usePostInteractions();
@@ -21,13 +22,16 @@ export default function CategoryPosts() {
         cat.name.toLowerCase().replace(/\s+/g, '-') === nameCategory
     );
 
+    // Manejar el caso especial de "todas"
+    const isAllCategories = nameCategory === 'todas';
+
     useEffect(() => {
         if (currentCategory) {
             setSelectedCategoryId(currentCategory.idCategory);
+        } else if (isAllCategories) {
+            setSelectedCategoryId(null);
         }
-    }, [currentCategory]);
-
-    // Filtrar publicaciones por categoría seleccionada
+    }, [currentCategory, isAllCategories]);    // Filtrar publicaciones por categoría seleccionada
     const filteredPostsWithoutImage = postWithoutImageData.filter(post =>
         selectedCategoryId ? post.idCategory === selectedCategoryId : true
     );
@@ -38,7 +42,16 @@ export default function CategoryPosts() {
     });
 
     const handleCategorySelect = (categoryId: number) => {
-        setSelectedCategoryId(categoryId);
+        const category = categorys.find(cat => cat.idCategory === categoryId);
+        if (category) {
+            const categoryPath = category.name.toLowerCase().replace(/\s+/g, '-');
+            navigate(`/categoria/${encodeURIComponent(categoryPath)}`);
+        }
+    };
+
+    const handleAllCategoriesSelect = () => {
+        // Navegar a la primera categoría disponible o a una página general
+        navigate('/categoria/todas');
     };
 
     const scroll = (direction: 'left' | 'right') => {
@@ -68,7 +81,7 @@ export default function CategoryPosts() {
         return false;
     };
 
-    if (!currentCategory) {
+    if (!currentCategory && !isAllCategories) {
         return (
             <div className="container mx-auto px-4 sm:px-6 xl:px-32 my-8">
                 <div className="text-center py-20">
@@ -83,36 +96,34 @@ export default function CategoryPosts() {
 
     return (
         <div className="container mx-auto px-4 sm:px-6 xl:px-32 my-25">
-            <style>     {`            
-                .scroll-hover {
-                overflow-x: auto;
-                overflow-y: hidden;
-                scrollbar-width: thin;
-                scrollbar-color: transparent transparent;
-                transition: scrollbar-color 0.3s ease;
-                }
-
-                .scroll-hover:hover {
-                scrollbar-color: #9ca3af #f1f1f1;
-                }
-            `}</style>
-
-
-            {/* Category Header */}
-            <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+ 
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-8">
                 {/* Breadcrumbs */}
                 <div className="flex flex-wrap gap-2 mb-6">
                     <Link className="text-sm font-medium text-gray-500 hover:underline" to="/">Inicio</Link>
                     <span className="text-sm font-medium text-gray-500">/</span>
-                    <span className="text-sm font-medium text-[#111418]">{currentCategory.name}</span>
+                    <Link className="text-sm font-medium text-gray-500 hover:underline" to="/#loultimo">Categoría</Link>
+                    <span className="text-sm font-medium text-gray-500">/</span>
+                    <span className="text-sm font-medium text-[#111418]">
+                        {isAllCategories ? 'Todas las categorías' : currentCategory?.name}
+                    </span>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-4">
-                    <div className="p-1 sm:p-3 bg-primary-100 rounded-full">
-                        <Icon icon={currentCategory.icon} className="w-10 h-10 text-primary" />
+                <div className="flex items-center gap-0">
+                    <div className="p-0 sm:p-3 bg-primary-100 rounded-full">
+                        <Icon
+                            icon={isAllCategories ? 'material-symbols-light:border-all-rounded' : currentCategory?.icon || ''}
+                            className="w-10 h-10 text-primary hidden sm:block"
+                        />
                     </div>
                     <div>
-                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{currentCategory.name}</h1>
-                        <p className="text-gray-600 text-md">{currentCategory.description}</p>
+                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                            {isAllCategories ? 'Todas las categorías' : currentCategory?.name}
+                        </h1>
+                        <p className="text-gray-600 text-md">
+                            {isAllCategories
+                                ? 'Explora publicaciones de todas las categorías disponibles'
+                                : currentCategory?.description}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -120,32 +131,36 @@ export default function CategoryPosts() {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 {/* Sidebar - Categories */}
                 <aside className="lg:col-span-1">
-                    <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+                    <div className='gap-6 scroll-hover p-4 mb-4 sm:mb-8 bg-white border border-gray-200 rounded-2xl'>
                         <h2 className="text-xl font-bold text-gray-900 mb-4">Categorías</h2>
-                        <div className="space-y-2">
+                        <div className="flex gap-2 sm:flex-col sm:space-y-2">
                             <button
-                                onClick={() => setSelectedCategoryId(null)}
-                                className={`w-full text-left p-3 rounded-lg transition-colors ${selectedCategoryId === null
+                                onClick={handleAllCategoriesSelect}
+                                className={`shrink-0 text-left p-3 rounded-lg transition-colors ${isAllCategories
                                     ? 'bg-primary text-white'
                                     : 'hover:bg-gray-100 text-gray-700'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
-                                    <Icon icon="streamline-sharp-color:select-all-flat" className='size-5' />
+                                    <Icon icon="material-symbols-light:border-all-rounded" className="size-5" />
                                     <span className="font-medium">Todas</span>
                                 </div>
                             </button>
+
                             {categorys.map(category => (
                                 <button
                                     key={category.idCategory}
                                     onClick={() => handleCategorySelect(category.idCategory)}
-                                    className={`w-full text-left p-3 rounded-lg transition-colors ${selectedCategoryId === category.idCategory
+                                    className={`shrink-0 text-left p-3 rounded-lg transition-colors ${selectedCategoryId === category.idCategory
                                         ? 'bg-primary text-white'
                                         : 'hover:bg-gray-100 text-gray-700'
                                         }`}
                                 >
-                                    <div className="flex items-center gap-3">
-                                        <Icon icon={category.icon} className="size-5" />
+                                    <div className="flex items-center gap-3 group">
+                                        <Icon
+                                            icon={category.icon}
+                                            className="size-5 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
+                                        />
                                         <span className="font-medium">{category.name}</span>
                                     </div>
                                 </button>
@@ -158,11 +173,11 @@ export default function CategoryPosts() {
                 <main className="lg:col-span-3 space-y-8">
                     {/* Posts Without Image Section */}
                     <section>
-                        <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-xl font-semibold text-gray-800 mb-4">Publicaciones recientes</h2>
+                        <div className="flex items-center justify-between">
+                            <h2 className="text-xl font-semibold text-gray-800 mb-6">Publicaciones recientes</h2>
                             <Link
                                 to="/insertar-publicacion"
-                                className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors"
+                                className="border bg-white border-gray-200 text-gray-800 px-4 py-2 rounded hover:text-black transition-colors hover:shadow-xs hover:border-gray-300 mb-4"
                             >
                                 Publicar
                             </Link>
@@ -174,7 +189,7 @@ export default function CategoryPosts() {
                         >
                             <div
                                 ref={scrollContainerRef}
-                                className='flex gap-6 scroll-hover pb-2 mb-8'
+                                className='flex gap-6 scroll-hover pb-2 mb-6'
                             >
                                 <div className="flex gap-6 p-2 bg-white border border-gray-200 rounded-2xl">
                                     {filteredPostsWithoutImage.map((publication, index) => (
@@ -185,7 +200,7 @@ export default function CategoryPosts() {
                                                 <div className="absolute top-6 right-0 h-20 w-0.5 bg-gray-200 rounded-full group-hover:h-14 group-hover:bg-gray-400 transition-all duration-300"></div>
                                             )}
 
-                                            <div className="p-3">
+                                            <div className="p-2 sm:p-3">
                                                 <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors line-clamp-3">
                                                     {publication.title}
                                                 </h3>
@@ -237,11 +252,10 @@ export default function CategoryPosts() {
                     {/* Posts With Image Section - 2 columns grid */}
                     <section>
                         <h2 className="text-xl font-semibold text-gray-800 mb-6">Publicaciones destacadas</h2>
-
                         {filteredPostsWithImage.length > 0 ? (
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                 {filteredPostsWithImage.map((pub) => (
-                                    <div key={pub.idPublication} className="bg-white rounded-2xl shadow-sm border border-gray-50 overflow-hidden cursor-pointer hover:shadow-md transition-all duration-300 hover:border hover:border-gray-300 group">
+                                    <div key={pub.idPublication} className="bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-sm transition-all duration-300 hover:border hover:border-gray-300 group">
                                         {/* Imagen principal */}
                                         <div className="relative">
                                             <img
@@ -273,7 +287,7 @@ export default function CategoryPosts() {
                                                     )}
 
                                                     <div>
-                                                        <h3 className="text-sm font-medium text-gray-800 line-clamp-1 mb-1">
+                                                        <h3 className="text-sm font-medium text-gray-800 line-clamp-1 w-40 sm:w-80 xl:w-60 overflow-hidden whitespace-nowrap mb-1">
                                                             {pub.userName}
                                                         </h3>
                                                         <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -308,7 +322,6 @@ export default function CategoryPosts() {
                                                 onDislike={postInteractions.handleDislike}
                                                 onComment={postInteractions.handleComment}
                                                 onBookmark={postInteractions.handleBookmark}
-                                                onShare={postInteractions.handleShare}
                                             />
                                         </div>
                                     </div>

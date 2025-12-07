@@ -2,37 +2,37 @@
   {
     "idCategory": 1,
     "name": "Noticias",
-    "description": "Sección dedicada a las últimas novedades y comunicados relevantes.",
+    "description": "Sección dedicada a las últimas novedades y comunicados relevantes, incluyendo noticias locales, nacionales e internacionales.",
     "icon": "fluent-color:news-16"
   },
   {
     "idCategory": 2,
     "name": "Eventos",
-    "description": "Calendario de actividades culturales, sociales y oficiales.",
+    "description": "Calendario de actividades culturales, sociales y oficiales, con detalles sobre fechas, horarios y ubicaciones.",
     "icon": "twemoji:calendar"
   },
   {
     "idCategory": 3,
     "name": "Empleos",
-    "description": "Ofertas laborales y oportunidades profesionales disponibles.",
+    "description": "Ofertas laborales y oportunidades profesionales disponibles, con información sobre requisitos y cómo postular.",
     "icon": "noto-v1:woman-construction-worker"
   },
   {
     "idCategory": 4,
     "name": "Publicidad",
-    "description": "Espacio para anuncios y campañas informativas.",
+    "description": "Espacio para anuncios y campañas informativas, dirigido a promocionar productos, servicios o eventos.",
     "icon": "flat-color-icons:advertising"
   },
   {
     "idCategory": 5,
     "name": "Reporte ciudadano",
-    "description": "Canal para que los ciudadanos reporten incidencias o sugerencias.",
+    "description": "Canal para que los ciudadanos reporten incidencias o sugerencias, ayudando a mejorar la comunidad.",
     "icon": "streamline-ultimate-color:phone-type"
   },
-    {
+  {
     "idCategory": 6,
     "name": "Deportes",
-    "description": "Sección dedicada a eventos deportivos.",
+    "description": "Sección dedicada a eventos deportivos, con información sobre torneos, resultados y actividades relacionadas.",
     "icon": "noto-v1:soccer-ball"
   }
 ]
