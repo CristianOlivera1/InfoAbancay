@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from 'react';
-import { animateButton, type AnimationType } from '../../home/components/postAnimations';
+import { animateButton, type AnimationType } from '../../../../shared/client/components/post/postAnimations';
 
 export interface Comment {
     id: number;
@@ -63,7 +63,7 @@ export function useCommentInteractions() {
             } else {
                 newSet.add(commentId);
                 setShowFilledLikeComment(prevState => ({ ...prevState, [commentId]: true }));
-                
+
                 // Remover dislike si existe
                 setDislikedComments(prevDisliked => {
                     const newDislikedSet = new Set(prevDisliked);
@@ -71,7 +71,7 @@ export function useCommentInteractions() {
                     return newDislikedSet;
                 });
                 setShowFilledDislikeComment(prevState => ({ ...prevState, [commentId]: false }));
-                
+
                 // Animar el botón
                 animateButton(buttonElement, 'like' as AnimationType);
             }
@@ -94,7 +94,7 @@ export function useCommentInteractions() {
             } else {
                 newSet.add(commentId);
                 setShowFilledDislikeComment(prevState => ({ ...prevState, [commentId]: true }));
-                
+
                 // Remover like si existe
                 setLikedComments(prevLiked => {
                     const newLikedSet = new Set(prevLiked);
@@ -102,7 +102,7 @@ export function useCommentInteractions() {
                     return newLikedSet;
                 });
                 setShowFilledLikeComment(prevState => ({ ...prevState, [commentId]: false }));
-                
+
                 // Animar el botón
                 animateButton(buttonElement, 'dislike' as AnimationType);
             }
@@ -126,7 +126,7 @@ export function useCommentInteractions() {
             } else {
                 newSet.add(replyId);
                 setShowFilledLikeReply(prevState => ({ ...prevState, [replyId]: true }));
-                
+
                 // Remover dislike si existe
                 setDislikedReplies(prevDisliked => {
                     const newDislikedSet = new Set(prevDisliked);
@@ -134,7 +134,7 @@ export function useCommentInteractions() {
                     return newDislikedSet;
                 });
                 setShowFilledDislikeReply(prevState => ({ ...prevState, [replyId]: false }));
-                
+
                 // Animar el botón
                 animateButton(buttonElement, 'like' as AnimationType);
             }
@@ -157,7 +157,7 @@ export function useCommentInteractions() {
             } else {
                 newSet.add(replyId);
                 setShowFilledDislikeReply(prevState => ({ ...prevState, [replyId]: true }));
-                
+
                 // Remover like si existe
                 setLikedReplies(prevLiked => {
                     const newLikedSet = new Set(prevLiked);
@@ -165,7 +165,7 @@ export function useCommentInteractions() {
                     return newLikedSet;
                 });
                 setShowFilledLikeReply(prevState => ({ ...prevState, [replyId]: false }));
-                
+
                 // Animar el botón
                 animateButton(buttonElement, 'dislike' as AnimationType);
             }
@@ -206,25 +206,25 @@ export function useCommentInteractions() {
         dislikedComments,
         showFilledLikeComment,
         showFilledDislikeComment,
-        
+
         // Estados para respuestas
         likedReplies,
         dislikedReplies,
         showFilledLikeReply,
         showFilledDislikeReply,
-        
+
         // Estados para formularios
         showReplyForm,
         replyTexts,
-        
+
         // Handlers para comentarios
         handleLikeComment,
         handleDislikeComment,
-        
+
         // Handlers para respuestas
         handleLikeReply,
         handleDislikeReply,
-        
+
         // Handlers para formularios
         handleToggleReplyForm,
         handleReplyTextChange,
