@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import NewNews from "./components/NewNews";
 import RelatedContent from "./components/RelatedContent";
 import Comments from "./components/Comments";
-import { usePostInteractions } from "../home/components/PostInteractions";
-import PostInteractionButtons from "../home/components/PostInteractionButtons";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { usePostInteractions } from "../../../shared/client/components/post/PostInteractions";
+import PostInteractionButtons from "../../../shared/client/components/post/PostInteractionButtons";
 
 export default function PublicationDetails() {
     const postInteractions = usePostInteractions();
