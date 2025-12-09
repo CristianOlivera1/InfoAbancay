@@ -6,8 +6,8 @@ import postWithoutImageData from '../home/postWithoutImage.json';
 import publicationsWithImageData from '../home/publicationsWithImage.json';
 import { timeAgo } from '../../../utils/timeAgo';
 import { getInitials } from '../../../utils/getInitials';
-import { usePostInteractions } from '../home/components/PostInteractions';
-import PostInteractionButtons from '../home/components/PostInteractionButtons';
+import PostInteractionButtons from '../../../shared/client/components/post/PostInteractionButtons';
+import { usePostInteractions } from '../../../shared/client/components/post/PostInteractions';
 
 export default function CategoryPosts() {
     const { nameCategory } = useParams<{ nameCategory: string }>();
@@ -29,7 +29,7 @@ export default function CategoryPosts() {
         } else if (isAllCategories) {
             setSelectedCategoryId(null);
         }
-    }, [currentCategory, isAllCategories]); 
+    }, [currentCategory, isAllCategories]);
     const filteredPostsWithoutImage = postWithoutImageData.filter(post =>
         selectedCategoryId ? post.idCategory === selectedCategoryId : true
     );
@@ -93,7 +93,7 @@ export default function CategoryPosts() {
 
     return (
         <div className="container mx-auto px-4 sm:px-6 xl:px-32 my-25">
- 
+
             <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-8">
                 {/* Breadcrumbs */}
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -173,7 +173,7 @@ export default function CategoryPosts() {
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-semibold text-gray-800 mb-6">Publicaciones recientes</h2>
                             <Link
-                                to="/insertar-publicacion"
+                                to="/crear-publicacion"
                                 className="border bg-white border-gray-200 text-gray-800 px-4 py-2 rounded hover:text-black transition-colors hover:shadow-xs hover:border-gray-300 mb-4"
                             >
                                 Publicar
