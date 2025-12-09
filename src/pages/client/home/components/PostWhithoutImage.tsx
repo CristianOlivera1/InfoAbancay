@@ -49,7 +49,7 @@ export default function PostWhithoutImage() {
                 
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Lo último</h2>
                   <Link
-                  to="insertar-publicacion"
+                  to="crear-publicacion"
                   className="border bg-white border-gray-200 text-gray-800 px-4 py-2 rounded hover:text-black transition-colors hover:shadow-xs hover:border-gray-300">
                   Publicar
                 </Link>
