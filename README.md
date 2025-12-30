@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# InfoAbancay
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma web de noticias y publicaciones locales para la ciudad de Abancay, Apurímac. Permite a los usuarios compartir y descubrir contenido sobre eventos culturales, deportes, turismo, negocios y más.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - Biblioteca de UI
+- **TypeScript** - Tipado estático
+- **Vite** - Build tool y dev server
+- **React Router** - Navegación
+- **Tailwind CSS 4** - Framework de estilos
+- **Framer Motion** - Animaciones
+- **GSAP** - Animaciones de interacción
+- **Leaflet** - Mapas interactivos
+- **MDXEditor** - Editor de Markdown
+- **React Photo View** - Galería de imágenes
 
-## React Compiler
+## 📦 Instalación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Clonar el repositorio
+git clone https://github.com/CristianOlivera1/InfoAbancay.git
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Instalar dependencias
+pnpm install
+# o
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Desarrollo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Iniciar servidor de desarrollo
+pnpm dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Compilar para producción
+pnpm build
+
+# Vista previa de producción
+pnpm preview
+
+# Ejecutar linter
+pnpm lint
 ```
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── components/     # Componentes reutilizables
+├── hooks/         # Custom hooks
+├── layout/        # Componentes de layout (Header, Footer)
+├── pages/         # Páginas de la aplicación
+├── routes/        # Configuración de rutas
+├── services/      # Servicios y API calls
+├── shared/        # Utilidades compartidas
+└── utils/         # Funciones auxiliares
+```
+
+## ✨ Características
+
+- 🏠 **Página de inicio** con publicaciones destacadas
+- 📝 **Crear publicaciones** con editor Markdown, imágenes y ubicación
+- 🗂️ **Categorías** (Cultura, Deportes, Turismo, Negocios, etc.)
+- 💬 **Sistema de comentarios** anidados
+- 👍 **Interacciones** (likes, dislikes, guardar, compartir)
+- 🗺️ **Ubicaciones** con mapas interactivos
+- 🏷️ **Etiquetas** para organizar contenido
+- 📱 **Diseño responsive** para móviles y tablets
