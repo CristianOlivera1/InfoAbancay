@@ -2,6 +2,8 @@
 
 Plataforma web de noticias y publicaciones locales para la ciudad de Abancay, Apurímac. Permite a los usuarios compartir y descubrir contenido sobre eventos culturales, deportes, turismo, negocios y más.
 
+![banner-infoabancay](https://github.com/user-attachments/assets/a4253837-677b-4d58-9df9-b9cd9fb65ae6)
+
 ## 🚀 Tecnologías
 
 - **React 19** - Biblioteca de UI
