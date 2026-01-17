@@ -45,20 +45,6 @@ pnpm preview
 pnpm lint
 ```
 
-## 📁 Estructura del Proyecto
-
-```
-src/
-├── components/     # Componentes reutilizables
-├── hooks/         # Custom hooks
-├── layout/        # Componentes de layout (Header, Footer)
-├── pages/         # Páginas de la aplicación
-├── routes/        # Configuración de rutas
-├── services/      # Servicios y API calls
-├── shared/        # Utilidades compartidas
-└── utils/         # Funciones auxiliares
-```
-
 ## ✨ Características
 
 - 🏠 **Página de inicio** con publicaciones destacadas
